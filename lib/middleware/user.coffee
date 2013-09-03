@@ -10,5 +10,6 @@ class User
 
 
 exports.middleware = (req, res, next) ->
-
+	#Based on IP Binding, attach userinfo
+	#Then use the rest of middleware to do the job
 
