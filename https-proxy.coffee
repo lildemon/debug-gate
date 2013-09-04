@@ -106,7 +106,7 @@ module.exports = (request, socketRequest, bodyhead) ->
 
         socketRequest.write "HTTP/#{version} 200 Connection established\r\n\r\n"
 
-       ### 
+        ### 
         proxySocket.on 'data', (chunk) ->
             socketRequest.write chunk
 
@@ -118,6 +118,7 @@ module.exports = (request, socketRequest, bodyhead) ->
 
         socketRequest.on 'end', ->
             proxySocket.end()
+        ###
 
         proxySocket.on 'error', (err) ->
             socketRequest.write "HTTP/#{version} 500 Connection error\r\n\r\n"
@@ -125,5 +126,14 @@ module.exports = (request, socketRequest, bodyhead) ->
 
         socketRequest.on 'error', (err) ->
             proxySocket.end()
-        ###
+
+        res.on 'error', ->
+            socketRequest.end()
+
+    req.on 'error', -> 
+        socketRequest.write "HTTP/#{version} 500 Connection error\r\n\r\n"
+        socketRequest.end()
+
+
+        
         

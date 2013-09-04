@@ -1575,5 +1575,11 @@ var FindProxyByRules = (function() {
 	var iplists=[];
 	var b=listen[0],d=listen[1];0<=b.indexOf(':')&&(b='['+b+']');b=b+':';d=b+d;function p(p){return p.replace('*:*',d).replace('*:',b)}var c=rules.length;while(0<=--c)rules[c][1]=p(rules[c][1]);c=iplists.length;while(0<=--c)iplists[c][1]=p(iplists[c][1]);var k='PROXY '+d+';DIRECT',l=p('DIRECT'),m=p('DIRECT');p=p('DIRECT');var dnsResolve2=(function(){try{var _=dnsResolveEx("localhost");return function(h){return(h=dnsResolveEx(h))?h.split(";",1)[0]:""}}catch(e){try{return dnsResolve}catch(e){return function(h){return dnsResolve(h)}}}})();return function(url,host,ip){if((host=host.toLowerCase())=='wallproxy')return k;var j,i,g,e,c,a,b,f,d,h;url=url.toLowerCase();j='http'==url.split(':',1);i=host.split('.');g=rules.length;a:for(c=0;c<g;c++){e=rules[c][0];for(a=0;3>a;a++){d=e[a];if(j){b=d.length;while(0<=--b)if(0<=url.indexOf(d[b])){if(1!=a)return rules[c][1];continue a}}d=e[a+3];b=i.length;while(0<=--b)if((h=d[i[b]])&&h.constructor==Array){f=h.length;while(0<=--f)if(h[f].test(url)){if(1!=a)return rules[c][1];continue a}}d=e[a+6];b=d.length;while(0<=--b)if(d[b].test(url)){if(1!=a)return rules[c][1];continue a}}}g=iplists.length;if(0<g){void 0===ip&&(ip=dnsResolve2(host));if(0<=ip.indexOf(':'))return m;ip=ip.split('.');if(4!=ip.length)return l;ip=(ip[0]<<24|ip[1]<<16|ip[2]<<8|ip[3])>>>0;for(c=0;c<g;c++){e=iplists[c][0];a=0;f=e.length;while(a<f){b=Math.floor((a+f)/2);d=e[b];if(d[0]<=ip&&ip<=d[1])return iplists[c][1];ip<d[0]?f=b:a=b+1}}}return p}})();
 	`
+proxyIfInclude = [
+	'google'
+	'facebook'
+	'twitter'
+]
 exports.proxyOrNot = (url) ->
-	!!~(FindProxyByRules(url, '').indexOf('PROXY'));
+	!!~(FindProxyByRules(url, '').indexOf('PROXY'))
+

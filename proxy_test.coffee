@@ -4,6 +4,14 @@ proxy = new httpProxy.RoutingProxy()
 url = require 'url'
 {proxyOrNot} = require './lib/proxy'
 app = express()
+http = require 'http'
+
+proxy.on 'proxyError', (err, req, res) ->
+	if res._headerSent
+		res.destroy()
+	else
+		res.writeHead(500, { 'Content-Type': 'text/plain' });
+		res.end('An error has occurred: ' + JSON.stringify(err))
 
 
 app.use (req, res, next) ->
@@ -15,20 +23,21 @@ app.use (req, res, next) ->
 		req.proxyPort = port
 
 
-	if false
+	if true
 		###if !!~req.url.indexOf('baidu')
 			req.proxyHost = '173.194.72.99'###
-		console.log 'proxy'
-		if (proxyOrNot req.url) or true
-			#console.log "should proxy: #{req.url}"
-			req.proxyHost = 'localhost'
+		
+		if (proxyOrNot req.url) or !!~req.url.indexOf('qq')
+			console.log "should proxy: #{req.url}"
+			req.proxyHost = '127.0.0.1'
 			req.proxyPort = '8118'
 
 
 		#patch for http-proxy path err
-		req.url = parsedUrl.path
-		req.headers.host = 'localhost'
+		###req.url = parsedUrl.path
+		req.headers.host = 'localhost'###
 
+		console.log "Requesting: #{req.url}"
 		proxy.proxyRequest req, res,
 			host: req.proxyHost || req.host
 			port: req.proxyPort || 80
@@ -44,7 +53,7 @@ app.use (req, res, next) ->
 			socks_host: '127.0.0.1'
 			socks_port: 7070###
 
-	if true
+	if false
 
 		{S5Agent} = require 'socks5-http-client'
 		agent = new S5Agent
@@ -61,7 +70,17 @@ app.use (req, res, next) ->
 			enable:
 				xforward: false
 
-	else
+	if false
+		proxy.proxyRequest req, res,
+			host: '127.0.0.1'
+			port: 8118
+			buffer: req.reqbuf
+			###target:
+				agent: agent###
+			enable:
+				xforward: false
+
+	if false
 
 		req.proxyHost = '192.168.254.66'
 		console.log 'request'
@@ -76,4 +95,9 @@ app.use (req, res, next) ->
 			enable:
 				xforward: false
 
-app.listen 8338
+
+
+server = http.createServer(app).listen 8338
+server.addListener 'connect', require './https-proxy'
+
+#app.listen 8338
