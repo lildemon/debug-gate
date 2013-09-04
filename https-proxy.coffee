@@ -33,7 +33,7 @@ req._addHeaderLine = function(field, value) {
  
   return( [ host, port ] );
 }`
-
+###
 module.exports = (request, socketRequest, bodyhead) ->
     #console.log request.allHeaders
     url = request.url
@@ -73,6 +73,57 @@ module.exports = (request, socketRequest, bodyhead) ->
 
 
 
+###
 
 
+module.exports = (request, socketRequest, bodyhead) ->
+    #console.log request.allHeaders
+    url = request.url
+    version = request.httpVersion
+    hostport = getHostPortFromString url, 443
+    #connectHeader = "CONNECT #{hostport[0]}:#{hostport[1]} HTTP/#{version}\r\n"
 
+
+    req = http.request
+        port: 8118
+        hostname: '127.0.0.1'
+        method: 'CONNECT'
+        path: url
+    req.end()
+
+    req.on 'connect', (res, proxySocket, head) ->
+
+        
+        #proxySocket.write bodyhead
+        
+        #proxySocket.write request.allHeaders.join('\r\n') + '\r\n\r\n'
+        proxySocket.write(bodyhead)
+        socketRequest.write(head)
+
+        #console.log request.allHeaders.join('\r\n')
+        socketRequest.pipe(proxySocket)
+        proxySocket.pipe(socketRequest)
+
+        socketRequest.write "HTTP/#{version} 200 Connection established\r\n\r\n"
+
+       ### 
+        proxySocket.on 'data', (chunk) ->
+            socketRequest.write chunk
+
+        proxySocket.on 'end', ->
+            socketRequest.end()
+
+        socketRequest.on 'data', (chunk) ->
+            proxySocket.write chunk
+
+        socketRequest.on 'end', ->
+            proxySocket.end()
+
+        proxySocket.on 'error', (err) ->
+            socketRequest.write "HTTP/#{version} 500 Connection error\r\n\r\n"
+            socketRequest.end()
+
+        socketRequest.on 'error', (err) ->
+            proxySocket.end()
+        ###
+        
