@@ -7,11 +7,30 @@ app = express()
 http = require 'http'
 
 proxy.on 'proxyError', (err, req, res) ->
+	console.log "Proxy Error Catched for url: #{req.url}"
 	if res._headerSent
 		res.destroy()
 	else
-		res.writeHead(500, { 'Content-Type': 'text/plain' });
-		res.end('An error has occurred: ' + JSON.stringify(err))
+		res.writeHead(500, { 'Content-Type': 'text/html' });
+		#res.end('An error has occurred: ' + JSON.stringify(err))
+		res.end """
+			<!DOCTYPE html>
+			<html>
+				<head><meta charset="UTF-8" /><title>网关出错了</title></head>
+				<body>
+					<h1>我是Front-Gate!</h1>
+					<h2>网关出错了</h2>
+					<p>你所访问的地址： #{req.originalUrl} 不存在或暂时无法访问</p>
+					<p>尝试加入代理规则并重新访问一次</p>
+					<dl>
+						<dt>错误信息</dt>
+						<dd>
+							#{JSON.stringify(err)}
+						</dd>
+					</dl>
+				</body>
+			</html>
+		"""
 
 
 app.use (req, res, next) ->
@@ -27,15 +46,16 @@ app.use (req, res, next) ->
 		###if !!~req.url.indexOf('baidu')
 			req.proxyHost = '173.194.72.99'###
 		
-		if (proxyOrNot req.url) or !!~req.url.indexOf('qq')
+		if (proxyOrNot req.url) or !!~req.url.indexOf('qq') or !!~req.url.indexOf('bit.ly')
 			console.log "should proxy: #{req.url}"
 			req.proxyHost = '127.0.0.1'
 			req.proxyPort = '8118'
+		else
+			#patch for http-proxy path err
+			req.url = parsedUrl.path
 
 
-		#patch for http-proxy path err
-		###req.url = parsedUrl.path
-		req.headers.host = 'localhost'###
+		
 
 		console.log "Requesting: #{req.url}"
 		proxy.proxyRequest req, res,
