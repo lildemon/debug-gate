@@ -1,0 +1,1947 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"proxy",
+				"proxyWebSocketRequest"
+			],
+			[
+				"getHost",
+				"getHostPortFromString"
+			],
+			[
+				"get",
+				"getUserForIp"
+			],
+			[
+				"sprite",
+				"spritepq.png	w:400 h:500"
+			],
+			[
+				"qp",
+				"regspritepq.png	w:1700 h:619"
+			],
+			[
+				"form",
+				"form_rep.png	w:770 h:9"
+			],
+			[
+				"regs",
+				"regspritepq.png	w:900 h:890"
+			],
+			[
+				"pq",
+				"regspritepq.png	w:900 h:890"
+			],
+			[
+				"rep",
+				"repeat-x"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"bol",
+				"bolder"
+			],
+			[
+				"jque",
+				"jquery-1.7.2.min.js"
+			],
+			[
+				"bimg",
+				"background-image"
+			],
+			[
+				"table",
+				"table-layout"
+			],
+			[
+				"mason",
+				"masonryOpt"
+			],
+			[
+				"spr",
+				"spr_g1.gif	w:500 h:500"
+			],
+			[
+				"change",
+				"changeBtnStat"
+			],
+			[
+				"chang",
+				"changeBtnStat"
+			],
+			[
+				"vert",
+				"vertical-align"
+			],
+			[
+				"ab",
+				"absolute"
+			],
+			[
+				"url",
+				"url()"
+			],
+			[
+				"recomm",
+				"recommendAppList"
+			],
+			[
+				"respons",
+				"responsiveGrid"
+			],
+			[
+				"cell",
+				"cellNum"
+			],
+			[
+				"Dual",
+				"DualHotListCon"
+			],
+			[
+				"Respon",
+				"ResponsiveContainer"
+			],
+			[
+				"prepare",
+				"preparedItem"
+			],
+			[
+				"bp",
+				"bgo:pb	background-origin:padding-box"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "proxy_test.coffee",
+			"settings":
+			{
+				"buffer_size": 2712,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lib/user.coffee",
+			"settings":
+			{
+				"buffer_size": 763,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lib/ipmap.coffee",
+			"settings":
+			{
+				"buffer_size": 739,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lib/middleware/filter.coffee",
+			"settings":
+			{
+				"buffer_size": 1985,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 3 files for \".writehead\"\n\nD:\\BDYUN\\FrontGate\\debug-gate\\node_modules\\http-proxy\\lib\\node-http-proxy\\http-proxy.js:\n  201      }\n  202  \n  203:     res.writeHead(500, { 'Content-Type': 'text/plain' });\n  204  \n  205      if (req.method !== 'HEAD') {\n  ...\n  330        res.setHeader(key, response.headers[key]);\n  331      });\n  332:     res.writeHead(response.statusCode);\n  333  \n  334      function ondata(chunk) {\n\nD:\\BDYUN\\FrontGate\\debug-gate\\node_modules\\http-proxy\\lib\\node-http-proxy\\routing-proxy.js:\n  200        try {\n  201          if (!this.emit('notFound', req, res)) {\n  202:           res.writeHead(404);\n  203            res.end();\n  204          }\n  205        }\n  206        catch (er) {\n  207:         console.error(\"res.writeHead/res.end error: %s\", er.message);\n  208        }\n  209  \n\n4 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 843,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "https-proxy.coffee",
+			"settings":
+			{
+				"buffer_size": 3942,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "node_modules/http-proxy/lib/node-http-proxy/http-proxy.js",
+			"settings":
+			{
+				"buffer_size": 28750,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				"format",
+				"Format Code"
+			],
+			[
+				"wrapto",
+				"Word Wrap: Toggle"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"coffee",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"pyt",
+				"Set Syntax: Python"
+			],
+			[
+				"ip",
+				"Package Control: Install Package"
+			],
+			[
+				"outw",
+				"Emmet: Match Pair (outward)"
+			],
+			[
+				"wrap",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"inw",
+				"Emmet: Match Pair (inward)"
+			],
+			[
+				"wra",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"remo",
+				"Emmet: Remove Tag"
+			],
+			[
+				"remove tag",
+				"Emmet: Remove Tag"
+			],
+			[
+				"bra",
+				"BracketHighlighter: Select Bracket Content"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				":s",
+				":w - Save"
+			],
+			[
+				"",
+				":$ - EOF"
+			],
+			[
+				"wabb",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"wab",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"w",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"inwa",
+				"Emmet: Match Pair (inward)"
+			],
+			[
+				"wrapa",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"rename",
+				"Emmet: Rename Tag"
+			],
+			[
+				"inwar",
+				"Emmet: Match Pair (inward)"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"wrap to",
+				"Word Wrap: Toggle"
+			],
+			[
+				"dif",
+				"Git: Diff Current File"
+			],
+			[
+				"diff",
+				"Git: Diff Current File"
+			],
+			[
+				"abbr",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"remove",
+				"Emmet: Remove Tag"
+			],
+			[
+				"remov",
+				"Emmet: Remove Tag"
+			],
+			[
+				"javascript",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"brack",
+				"BracketHighlighter: Select Bracket Content"
+			],
+			[
+				"wrap abb",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"brac",
+				"BracketHighlighter: Select Bracket Content"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"comm",
+				"Git: Commit"
+			],
+			[
+				"mat",
+				"Emmet: Go to Matching Pair"
+			],
+			[
+				"tag",
+				"Emmet: Rename Tag"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"inward",
+				"Emmet: Match Pair (inward)"
+			],
+			[
+				"commit",
+				"Git: Commit"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"match",
+				"Emmet: Go to Matching Pair"
+			],
+			[
+				"commen",
+				"Toggle Comment"
+			],
+			[
+				"git diff ",
+				"Git: Diff Tool All"
+			],
+			[
+				"git df",
+				"Git: Diff Current File"
+			],
+			[
+				"git add ",
+				"Git: Add..."
+			],
+			[
+				"git s",
+				"Git: Status"
+			],
+			[
+				"git stash",
+				"Git: Stash Apply"
+			],
+			[
+				"git comi",
+				"Git: Commit"
+			],
+			[
+				"git ad",
+				"Git: Add..."
+			],
+			[
+				"ma",
+				"Emmet: Go to Matching Pair"
+			],
+			[
+				"outwa",
+				"Emmet: Match Pair (outward)"
+			],
+			[
+				"git add.",
+				"Git: Add..."
+			],
+			[
+				"out",
+				"Emmet: Match Pair (outward)"
+			],
+			[
+				"sele",
+				"Rot13 Selection"
+			],
+			[
+				"select",
+				"Rot13 Selection"
+			],
+			[
+				"for",
+				"Format Code"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"emmet",
+				"Emmet: Previous Edit Point"
+			],
+			[
+				"emmet wrap",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"emmet goto",
+				"Emmet: Go to Matching Pair"
+			],
+			[
+				"image",
+				"Emmet: Update Image Size"
+			],
+			[
+				"goto",
+				"Emmet: Go to Matching Pair"
+			],
+			[
+				"wr",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"emm",
+				"Emmet: Merge Lines"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript"
+			]
+		],
+		"width": 450.0
+	},
+	"console":
+	{
+		"height": 376.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": true,
+		"show_open_files": false,
+		"show_tabs": true,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/BDYUN/FrontGate/debug-gate/node_modules/http-proxy/node_modules/colors/colors.js.dump",
+		"/D/BDYUN/FrontGate/debug-gate/node_modules/http-proxy/node_modules/colors/ReadMe.md.dump",
+		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/filter.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/package.json",
+		"/D/BDYUN/FrontGate/debug-gate/test.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/user_manager.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/proxy.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/rewrite.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/lib/user.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/node_modules/http-proxy/lib/node-http-proxy/http-proxy.js",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/D/BDYUN/FrontGate/debug-gate/node_modules/socks5-http-client/index.js",
+		"/D/BDYUN/FrontGate/debug-gate/https-proxy.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/README.md",
+		"/D/BDYUN/FrontGate/debug-gate/lib/proxy.coffee",
+		"/D/BDYUN/FrontGate/proxy-example.pac",
+		"/D/BDYUN/FrontGate/debug-gate/lib/ipmap.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/stream_filter.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/user.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/ipmap.coffee",
+		"/D/BDYUN/TM/dev91/public/css/style.css",
+		"/C/Users/Default.HP7900-RON/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Default.HP7900-RON/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Default.HP7900-RON/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/c/Users/Default.HP7900-RON/.dotfiles/bash/alias.bash",
+		"/D/BDYUN/TM/社交版/public/ng-demo - 拷贝.html",
+		"/D/BDYUN/TM/社交版/public/partials/rating.html",
+		"/D/BDYUN/TM/社交版/public/partials/button.html",
+		"/D/BDYUN/TM/社交版/public/index.html",
+		"/D/BDYUN/TM/社交版/public/index - 拷贝.html",
+		"/D/BDYUN/TM/wenjuan/public/8_问卷06.html",
+		"/D/BDYUN/TM/wenjuan/public/css/style.css",
+		"/D/BDYUN/TM/wenjuan/public/9_问卷07.html",
+		"/D/BDYUN/TM/wenjuan/public/10_问卷08.html",
+		"/D/BDYUN/TM/wenjuan/public/12_问卷10.html",
+		"/D/BDYUN/TM/wenjuan/public/js/zepto-range.js",
+		"/D/BDYUN/TM/MTH媒体汇/MTLocal/public/css/style_hr.css",
+		"/D/BDYUN/TM/MTH媒体汇/MTLocal/public/gv1/index.html",
+		"/D/BDYUN/TM/MTH媒体汇/MTLocal/public/gv3/index.html",
+		"/D/BDYUN/TM/MTH媒体汇/MTLocal/public/gv3/js/common.js",
+		"/D/BDYUN/TM/MTH媒体汇/MTLocal/public/gv3/css/style_hr.css",
+		"/D/BDYUN/TM/MTH媒体汇/MTLocal/public/gv1/css/style3.css",
+		"/D/BDYUN/TM/js笔试/js/app.js",
+		"/D/BDYUN/TM/MTH媒体汇/MTLocal/public/js/nav.js",
+		"/D/BDYUN/TM/MTH媒体汇/MTLocal/public/index.html",
+		"/D/BDYUN/TM/MTH媒体汇/MTLocal/public/js/jquery.masonry.js",
+		"/D/BDYUN/TM/MTH媒体汇/MTLocal/public/js/masonry.pkgd.min.js",
+		"/D/BDYUN/TM/MTH媒体汇/MTLocal/public/css/style.css",
+		"/D/BDYUN/TM/MTH媒体汇/st.sublime-project",
+		"//192.168.19.107/d$/WWWRoot/pc.macrobile.com/Soft/All/IndiaApp.aspx",
+		"//192.168.19.107/d$/WWWRoot/pc.macrobile.com/Resources/Soft/new/css/helper_style.css",
+		"/D/BDYUN/TM/indiaProj/Repo/Resources/Ring/All/js/common.js",
+		"/D/BDYUN/TM/indiaProj/Repo/Resources/Soft/new/js/common.js",
+		"/D/BDYUN/TM/indiaProj/Repo/Resources/Soft/new/js/common_popmod.js",
+		"/D/BDYUN/TM/indiaProj/public/Resources/Soft/new/js/common.js",
+		"/D/BDYUN/TM/indiaProj/public/Resources/css/style-IndiaApp.css",
+		"/D/BDYUN/TM/indiaProj/public/soft/css/style.css",
+		"//192.168.19.107/d$/WWWRoot/pc.macrobile.com/Game/All/Show.aspx",
+		"/D/BDYUN/TM/indiaProj/Repo/Soft/All/Show.aspx.cs",
+		"/D/BDYUN/TM/indiaProj/Repo/Soft/All/Show.aspx.designer.cs",
+		"/D/BDYUN/TM/indiaProj/public/Resources/Ring/All/js/common.js",
+		"/D/BDYUN/TM/indiaProj/Repo/Soft/All/Show.aspx",
+		"/D/BDYUN/TM/indiaProj/public/Index.aspx.html",
+		"/D/BDYUN/TM/indiaProj/Repo/Ring/All/Index.aspx",
+		"/D/BDYUN/TM/indiaProj/Repo/Ring/All/Index.aspx.cs",
+		"/D/BDYUN/TM/indiaProj/public/Resources/css/style-default.css",
+		"/D/BDYUN/TM/indiaProj/parameter_links.txt",
+		"/D/BDYUN/TM/indiaProj/public/India_Apps.html",
+		"/D/BDYUN/TM/indiaProj/public/soft/应用二级.html",
+		"/D/BDYUN/TM/indiaProj/public/soft/应用首页.html",
+		"/D/BDYUN/TM/indiaProj/Repo/Soft/All/List.aspx",
+		"/D/BDYUN/TM/indiaProj/Repo/Search/all/Search.aspx",
+		"/D/BDYUN/TM/indiaProj/Repo/Search/all/Controls/SearchBar.ascx",
+		"/D/BDYUN/TM/indiaProj/Repo/Resources/Soft/new/css/style.css",
+		"/D/BDYUN/TM/indiaProj/Repo/Search/all/Index.aspx",
+		"/D/BDYUN/TM/indiaProj/Repo/Soft/All/Index.aspx",
+		"/D/BDYUN/TM/indiaProj/public/soft/js/common.js",
+		"/D/BDYUN/TM/indiaProj/Repo/Soft/All/Controls/NewMenu.ascx",
+		"/D/BDYUN/TM/indiaProj/Repo/Soft/All/Index.aspx.cs",
+		"/D/BDYUN/TM/indiaProj/Repo/Soft/All/Index.aspx.designer.cs",
+		"/D/BDYUN/TM/indiaProj/public/Resources/Js/common.js",
+		"/D/BDYUN/TM/indiaProj/public/soft/搜索结果页.html",
+		"/D/BDYUN/TM/indiaProj/public/Resources/Js/Comment.js.bak",
+		"/D/BDYUN/TM/indiaProj/public/soft/搜索结果页（无结果）.html",
+		"/D/BDYUN/TM/indiaProj/public/soft/搜索.html",
+		"/D/BDYUN/TM/indiaProj/public/soft/default.html",
+		"/D/BDYUN/TM/indiaProj/public/soft/游戏首页.html",
+		"/D/BDYUN/TM/indiaProj/public/soft/详情页.html",
+		"/D/BDYUN/TM/indiaProj/public/MessageRing.aspx.html",
+		"/D/BDYUN/TM/indiaProj/public/soft/js/glslide.js",
+		"/D/BDYUN/TM/indiaProj/public/soft/ver_bindslide.js",
+		"/D/BDYUN/TM/indiaProj/public/Resources/Js/library.js",
+		"/C/Users/Default.HP7900-RON/AppData/Roaming/npm/node_modules/viewpublic/Gruntfile.js",
+		"/C/Users/Default.HP7900-RON/AppData/Roaming/npm/node_modules/viewpublic/package.json",
+		"/C/Users/Default.HP7900-RON/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/jquery.js                D%3A%5CBDYUN%5CTM%5CindiaProj%5Cpublic%5Csoft%5Cjs%5Cjquery.js",
+		"/D/BDYUN/TM/indiaProj/public/soft/js/jquery.js",
+		"/D/BDYUN/TM/indiaProj/public/CallRing.aspx.html",
+		"/D/BDYUN/TM/indiaProj/public/Ranking.aspx.html",
+		"/D/BDYUN/TM/web前端试卷/css/style.css",
+		"/D/BDYUN/TM/indiaProj/st.sublime-project",
+		"/D/BDYUN/TM/moboproj/public/list.html",
+		"/D/BDYUN/TM/moboproj/public/app.html",
+		"/D/BDYUN/TM/moboproj/public/categories.html",
+		"/D/BDYUN/TM/moboproj/public/home.html",
+		"/D/BDYUN/TM/moboproj/public/resources/js/library-min.js",
+		"/D/BDYUN/TM/moboproj/public/resources/soft/all/js/responsive_con.js",
+		"/D/BDYUN/海外助手/Soft/All/Index.aspx",
+		"/D/BDYUN/TM/moboproj/public/Top_ChartsWeekRank.html",
+		"/D/BDYUN/TM/moboproj/public/collections.html",
+		"/D/BDYUN/TM/moboproj/public/Latest.html",
+		"/D/BDYUN/海外助手/Soft/All/TopicDetail.aspx.cs",
+		"/D/BDYUN/海外助手/Soft/All/ChoiceTopic.aspx",
+		"/C/Users/Default.HP7900-RON/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/latest_jquery-1.5.1.min.js                D%3A%5CBDYUN%5CTM%5Cmoboproj%5Cpublic%5Cresources%5Csoft%5Call%5Cjs%5Clatest_jquery-1.5.1.min.js",
+		"/D/BDYUN/海外助手/Soft/All/TopicDetail.aspx",
+		"/C/Users/Default.HP7900-RON/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/Cache.aspx                D%3A%5CBDYUN%5C%E6%B5%B7%E5%A4%96%E5%8A%A9%E6%89%8B%5CCache.aspx",
+		"/D/BDYUN/海外助手/Soft/All/ChoiceTopic.aspx.cs",
+		"/D/BDYUN/海外助手/Theme/Android/Index.aspx",
+		"/C/Users/Default.HP7900-RON/AppData/Roaming/Sublime Text 2/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/D/BDYUN/TM/GameCollect/caseJul16th/list.js",
+		"/D/BDYUN/TM/moboproj/public/resources/soft/all/css/style.css",
+		"/D/BDYUN/TM/GameCollect/caseJul05th/modded/ue.coverflow.js",
+		"/D/BDYUN/wapFkbl/public/分类.html",
+		"//192.168.254.53/3.x助手/App/Detail.aspx",
+		"//192.168.254.53/3.x助手/Resources/App/Public/new/js/ue.coverflow.js",
+		"/D/BDYUN/wapFkbl/public/ix.html",
+		"/D/BDYUN/wapFkbl/public/js/index.js",
+		"/D/BDYUN/wapFkbl/public/js/common.js",
+		"/C/Users/Default.HP7900-RON/Desktop/gjj.xlsx"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 92.0,
+		"where_history":
+		[
+			"D:\\BDYUN\\FrontGate\\debug-gate\\node_modules\\http-proxy\\lib\\node-http-proxy",
+			"D:\\BDYUN\\FrontGate\\debug-gate\\node_modules",
+			"D:\\BDYUN\\FrontGate\\nodejs\\node_modules\\http-proxy\\lib",
+			"D:\\BDYUN\\FrontGate\\nodejs\\node_modules\\http-proxy",
+			"<project>",
+			"D:\\BDYUN\\TM\\indiaProj\\Repo",
+			"<project>",
+			"\\\\192.168.19.107\\d$\\WWWRoot\\pc.macrobile.com",
+			"D:\\BDYUN\\TM\\indiaProj",
+			"D:\\BDYUN\\TM\\indiaProj\\Repo",
+			"D:\\BDYUN\\TM\\indiaProj",
+			"D:\\BDYUN\\TM\\indiaProj\\Repo",
+			"D:\\BDYUN\\海外助手",
+			"D:\\BDYUN\\TM\\moboproj\\public",
+			"D:\\BDYUN\\海外助手",
+			"D:\\BDYUN\\TM\\moboproj\\public",
+			"D:\\BDYUN\\TM\\moboproj\\public\\resources",
+			"D:\\BDYUN\\海外助手",
+			"<project>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"_write.call",
+			"tr.",
+			".writehead",
+			"writehead",
+			"error",
+			"writehead",
+			"emit",
+			"proxyerror",
+			"header",
+			"writehead",
+			"response.header",
+			"header",
+			"head",
+			"Head",
+			"head",
+			"createserver",
+			"outgoing.path",
+			"req.url",
+			"url.parse",
+			"target",
+			"this.target",
+			"this.forward",
+			"this.forward.",
+			"origin",
+			".request",
+			"enable",
+			"forward",
+			"wallproxy",
+			"tolower",
+			"listen",
+			"app",
+			".use",
+			"router",
+			"wallproxy",
+			"autoproxy",
+			"gfwlist",
+			"search",
+			"iplists",
+			"this.options",
+			"resume",
+			".stack",
+			"middleware",
+			"stream",
+			"handler",
+			"createServer",
+			"fig_img",
+			"h3",
+			"</div>",
+			"div",
+			"href=\"\"",
+			"span class=\"time",
+			"histroy",
+			"mainWidth",
+			"brickWidth",
+			"masonry",
+			"jquery",
+			"regsprite",
+			".png",
+			".r",
+			"repassword",
+			"repa",
+			"repassword",
+			"itxt",
+			"id",
+			".itxt",
+			"table",
+			"ssdf",
+			"reg-in",
+			"reg",
+			"after",
+			"clear",
+			"clearfix",
+			"a hre",
+			"progress",
+			"44748",
+			"elapse",
+			"updtime",
+			"{{",
+			"span",
+			">\n",
+			"progre",
+			"left: 50%",
+			"arrow_box",
+			"avatar",
+			"sub",
+			"button",
+			"comments",
+			".box",
+			"45px",
+			"streambox",
+			"2px",
+			".range",
+			"hover",
+			"☆",
+			"dark",
+			"<input name=\"",
+			"type=\"radio",
+			"180px",
+			"180",
+			"o\">\n<inp",
+			"radio_r2",
+			"<td>",
+			"input",
+			"th",
+			"text",
+			"theme",
+			"styleQueue",
+			"this.offset",
+			"_placeBrick",
+			"columnwidth",
+			"_getColumns",
+			"columnwidth",
+			"layout",
+			"_placeBrick",
+			"isfluid",
+			"p>我不是",
+			"img src=\"images/null.gif",
+			"<span>",
+			"li",
+			"PageMap",
+			"pageMap",
+			"page",
+			"itemIdx",
+			"pgIdx",
+			"steps",
+			"contWidth",
+			"widths",
+			"pager"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "proxy_test.coffee",
+					"settings":
+					{
+						"buffer_size": 2712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1593,
+								1593
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 771.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "lib/user.coffee",
+					"settings":
+					{
+						"buffer_size": 763,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								242,
+								242
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 648.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "lib/ipmap.coffee",
+					"settings":
+					{
+						"buffer_size": 739,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								337,
+								337
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "lib/middleware/filter.coffee",
+					"settings":
+					{
+						"buffer_size": 1985,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								438,
+								438
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"settings":
+					{
+						"buffer_size": 843,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										160,
+										170
+									],
+									[
+										350,
+										360
+									],
+									[
+										614,
+										624
+									],
+									[
+										750,
+										760
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								355,
+								355
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"detect_indentation": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "https-proxy.coffee",
+					"settings":
+					{
+						"buffer_size": 3942,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3790,
+								3790
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2052.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "node_modules/http-proxy/lib/node-http-proxy/http-proxy.js",
+					"settings":
+					{
+						"buffer_size": 28750,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10895,
+								10904
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5627.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 36.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.415255058888,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.CoffeeLintPanel":
+	{
+		"height": 114.0
+	},
+	"output.git":
+	{
+		"height": 120.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"show.aspx",
+				"indiaProj/Repo/Soft/All/Show.aspx"
+			],
+			[
+				"show.asp",
+				"pc.macrobile.com/Game/All/Show.aspx"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 237.0,
+	"status_bar_visible": true
+}

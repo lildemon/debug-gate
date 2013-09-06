@@ -8,7 +8,7 @@ http = require 'http'
 
 proxy.on 'proxyError', (err, req, res) ->
 	console.log "Proxy Error Catched for url: #{req.url}"
-	if res._headerSent
+	if res._header
 		res.destroy()
 	else
 		res.writeHead(500, { 'Content-Type': 'text/html' });
@@ -18,7 +18,7 @@ proxy.on 'proxyError', (err, req, res) ->
 			<html>
 				<head><meta charset="UTF-8" /><title>网关出错了</title></head>
 				<body>
-					<h1>我是Front-Gate!</h1>
+					<h1>我就素Front-Gate!</h1>
 					<h2>网关出错了</h2>
 					<p>你所访问的地址： #{req.originalUrl} 不存在或暂时无法访问</p>
 					<p>尝试加入代理规则并重新访问一次</p>
@@ -57,7 +57,7 @@ app.use (req, res, next) ->
 
 		
 
-		console.log "Requesting: #{req.url}"
+		console.log "Requesting: #{req.originalUrl}"
 		proxy.proxyRequest req, res,
 			host: req.proxyHost || req.host
 			port: req.proxyPort || 80
@@ -117,7 +117,11 @@ app.use (req, res, next) ->
 
 
 
-server = http.createServer(app).listen 8338
+server = app.listen 8338
+
+server.on 'upgrade', (req, socket, head) ->
+	console.log 'Reciving UPGRADE Request'
+	proxy.proxyWebSocketRequest req, socket, head
+
 server.addListener 'connect', require './https-proxy'
 
-#app.listen 8338

@@ -134,6 +134,10 @@ module.exports = (request, socketRequest, bodyhead) ->
         socketRequest.write "HTTP/#{version} 500 Connection error\r\n\r\n"
         socketRequest.end()
 
-
+    socketRequest.on 'error', (err) -> #在另一端请求还没完成时候有时候要处理客户端请求的错误。
+        console.log 'HTTPS Proxy Request Error'
+    ###    
+    request.on 'error', ->
+        console.log 'HTTPS Proxy Request Error'
         
-        
+    ###
