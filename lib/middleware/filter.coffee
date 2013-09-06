@@ -65,6 +65,9 @@ exports.middleware = (req, res, next) ->
 
 				_end.call res, str, lastEncoding
 
+				# TODO: or maybe use express' send()
+				# res.send str
+
 
 		res.write = (data) ->
 			contType = res.getHeader 'Content-Type' || head_wroted.headers?['Content-Type']

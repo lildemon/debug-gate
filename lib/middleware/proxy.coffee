@@ -1,7 +1,7 @@
 httpProxy = require 'http-proxy'
 proxy = new httpProxy.RoutingProxy()
 url = require 'url'
-{proxyOrNot} = require './lib/proxy'
+{proxyOrNot} = require '../proxy'
 
 proxy.on 'proxyError', (err, req, res) ->
 	console.log "Proxy Error Catched for url: #{req.url}"
@@ -45,10 +45,25 @@ exports.middleware = (req, res, next) ->
 	if port = parseInt(parsedUrl.port)
 		req.proxyPort = port
 
+	if rewrite = req.user?.getRewrite(req.url) and rewrite.enabled
+		try
+			do ->
+				mapfn = eval "'use strict'; (#{rewrite.map})"
+				req.url = mapfn req.url
+				parsedUrl = url.parse req.url
+				req.proxyHost = req.rewriteHost = parsedUrl.hostname
+				req.proxyPort = url.parse(req.url).port || req.proxyPort
+		catch
+			console.log """
+				Rewrite function of URL #{req.url} Parse Failed.
+			"""
+
+	# Rewrite rule currently bypass gfw service
 	if !req.proxyHost and proxyOrNot req.url
 		# TODO: Use Configuration from database
 		req.proxyHost = '127.0.0.1'
 		req.proxyPort = '8118'
+		# TODO: In specification should proxy preserve host part of path?
 	else 
 		#patch for http-proxy path err
 		req.url = parsedUrl.path
@@ -60,3 +75,4 @@ exports.middleware = (req, res, next) ->
 		buffer: req.reqbuf
 		enable:
 			xforward: false
+		changeOrigin: !!req.rewriteHost

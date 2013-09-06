@@ -1,3 +1,5 @@
+# This module currently embedded in proxy.coffee
+
 request = require 'request'
 
 exports.middleware = (req, res, next) ->
