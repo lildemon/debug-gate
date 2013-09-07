@@ -3,8 +3,11 @@ proxy = new httpProxy.RoutingProxy()
 url = require 'url'
 {proxyOrNot} = require '../proxy'
 
+# TODO: https 双向代理的实现。。套用的逻辑应该基本一样 只是加上了SSl协议
+
 proxy.on 'proxyError', (err, req, res) ->
-	console.log "Proxy Error Catched for url: #{req.url}"
+	# TODO: Invock Express' Error Handling method
+	console.log "Proxy Error Catched for url: #{req.originalUrl}"
 	if res._header
 		res.destroy()
 	else
@@ -34,45 +37,83 @@ exports.bufferMiddleware = (req, res, next) ->
 	req.reqbuf = httpProxy.buffer req
 	next()
 
+exports.wsMiddleware = (req, socket, head) ->
+	console.log 'Reciving UPGRADE Request'
+	socket.on 'error', (err) ->
+		console.log "WebSocket error occured!"
+	proxy.proxyWebSocketRequest req, socket, head
+
 exports.middleware = (req, res, next) ->
 
+	# req.url is value of HTTP request GET or POST /<param>
+	# When browser request using http proxy, this will include full host part
+	# But we need host part always
+	{fullURL} = req
+	parsedUrl = url.parse(fullURL)
+
+	# TODO: loop detection get Gate's linsten port from config
+	# console.log "parsedUrl is: #{JSON.stringify(parsedUrl)}, \n req.url is: #{req.url}"
+	if parsedUrl.port is "8388" and req.url.substring(0, 1) is '/'
+		return next('检测到可能存在的请求循环（Gate请求Gate自己)，如不明确，请联系管理员')
+
+
 	#process hosts
-	if host = req.user?.getHost(req.url)
+	if host = req.user?.getHost(fullURL)
 		if host.enabled
 			req.proxyHost = host
 
-	parsedUrl = url.parse(req.url)
+	
 	if port = parseInt(parsedUrl.port)
 		req.proxyPort = port
 
-	if rewrite = req.user?.getRewrite(req.url) and rewrite.enabled
+	# Then rewrite rules
+	b_changeOrigin = false
+	if rewrite = req.user?.getRewrite(fullURL) and rewrite.enabled
 		try
 			do ->
 				mapfn = eval "'use strict'; (#{rewrite.map})"
-				req.url = mapfn req.url
-				parsedUrl = url.parse req.url
+				fullURL = req.url = mapfn fullURL
+				parsedUrl = url.parse fullURL
 				req.proxyHost = req.rewriteHost = parsedUrl.hostname
-				req.proxyPort = url.parse(req.url).port || req.proxyPort
+				req.proxyPort = parsedUrl.port || req.proxyPort
+				b_changeOrigin = true
 		catch
 			console.log """
-				Rewrite function of URL #{req.url} Parse Failed.
+				Rewrite function of URL #{req.originalUrl} Parse Failed.
 			"""
 
+
+
 	# Rewrite rule currently bypass gfw service
-	if !req.proxyHost and proxyOrNot req.url
+	if !req.proxyHost and (proxyOrNot fullURL) and false # TODO: gfw currently disabled
 		# TODO: Use Configuration from database
 		req.proxyHost = '127.0.0.1'
 		req.proxyPort = '8118'
 		# TODO: In specification should proxy preserve host part of path?
+
+		###
+		# this will be opened only if rewrite rule going through gfw either
+		# changeOrigin in here won't work because now origin is 127.0.0.1 which is not what we espected
+		if req.rewriteHost
+			b_changeOrigin = false
+			req.headers.host = "#{parsedUrl.hostname}:#{parsedUrl.port||80}"
+		###
+
 	else 
-		#patch for http-proxy path err
+		# patch for http-proxy path err
+		# http-proxy assumes req.url only has 'path' part, just as reverse proxy assumes
+		# But if going through gfw, then it's exact behavior we want. in this case browser and we both use forward proxy anyway.
 		req.url = parsedUrl.path
 
+	# Trigger Node.js client request keep-alive
+	unless req.headers['Connection']
+		#console.log "No 'Connection header'"
+		req.headers['Connection'] = 'keep-alive'
 
 	proxy.proxyRequest req, res,
 		host: req.proxyHost || req.host
 		port: req.proxyPort || 80
 		buffer: req.reqbuf
 		enable:
-			xforward: false
-		changeOrigin: !!req.rewriteHost
+			xforward: true
+		changeOrigin: b_changeOrigin

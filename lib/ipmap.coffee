@@ -31,5 +31,5 @@ exports.getUserForIp = (ip, callback) ->
 			else
 				callback? null
 	else
-		callback? map[ip].user
+		callback? map[ip]?.user
 

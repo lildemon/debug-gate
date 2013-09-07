@@ -24,11 +24,11 @@ exports.middleware = (request, socketRequest, bodyhead) ->
 		socketRequest.on 'error', (err) ->
 			proxySocket.end()
 
-
+		# Client kick start
 		socketRequest.write "HTTP/#{version} 200 Connection established\r\n\r\n"
 
 
-	if proxyOrNot url
+	if (proxyOrNot url) and false # TODO: gfw support disabled
 		# TODO: Use Configure from Database
 		req = http.request
 			port: 8118
@@ -41,9 +41,15 @@ exports.middleware = (request, socketRequest, bodyhead) ->
 			socketRequest.write head
 
 			onSocketConnect proxySocket
+		req.on 'error', (err) ->
+			socketRequest.write "HTTP/#{version} 500 Connection error\r\n\r\n"
+			socketRequest.end()
 	else
 		proxySocket = net.connect hostport[1], hostport[0], ->
 			onSocketConnect proxySocket
+		proxySocket.on 'error', (err) ->
+			socketRequest.write "HTTP/#{version} 500 Connection error\r\n\r\n"
+			socketRequest.end()
 
 
 

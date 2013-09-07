@@ -5,7 +5,7 @@ concat = require 'concat-stream'
 exports.middleware = (req, res, next) ->
 	
 
-	if filters = req.user?.getFilters req.url
+	if filters = req.user?.getFilters req.fullURL
 		_write = res.write
 
 		# Prevent headers from being finalized
@@ -38,7 +38,7 @@ exports.middleware = (req, res, next) ->
 									$elem.createReadStream(outer: is_outer).pipe concator
 						catch
 							console.log """
-								Map Function of URL #{req.url} Parse Failed \n
+								Map Function of URL #{req.fullURL} Parse Failed \n
 								In Selector: #{selector}
 							"""
 			_end = res.end
