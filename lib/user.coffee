@@ -4,7 +4,84 @@ urlpattern = require 'url-pattern'
 
 users = {}
 
-class User
+# insert fake data to test trumpet
+db.get = (id, callback) ->
+	callback null, {
+		"_id": "ronhng",
+		"_rev": "2-de30add1ef49e14e17d1c05edcc35fef",
+		"password": "mypass",
+		"rules": [{
+			"pattern": "*.cnbeta.com*",
+			"host": {
+				"ip": "192.168.1.4",
+				"enabled": false
+			},
+			"filters": [{
+				"selector": "div",
+				"map": "function($outer) { console.log('Hit rule!!'); return 'abc' }",
+				"enabled": true
+			}, {
+				"selector": "#def",
+				"map": "function($inner) { return $inner }",
+				"enabled": true
+			}, {
+				"selector": "img[src~=http://...]",
+				"map": "function($elem) { $elem.setAttribute('src', 'myimg') }",
+				"enabled": false
+			}, {
+				"selector": "script[src^=...]",
+				"map": "function($elem) { $elem.removeAttribute('type') }",
+				"enabled": false
+			}],
+			"swap": {
+				"content": "",
+				"mime": "text/html",
+				"enabled": false
+			},
+			"rewrite": {
+				"map": "function($url, $pattern) {}",
+				"enabled": false
+			},
+			"enabled": true
+		}, {
+			"pattern": "REGEX:(.*)\\.google\\.com",
+			"host": {
+				"ip": "192.168.1.4",
+				"enabled": true
+			},
+			"filters": {
+				"div#abc": {
+					"map": "function($outer) { return $outer }",
+					"enabled": true
+				},
+				"#def": {
+					"map": "function($inner) { return $inner }",
+					"enabled": true
+				},
+				"img[src~=http://...]": {
+					"map": "function($elem) { $elem.setAttribute('src', 'myimg') }",
+					"enabled": true
+				},
+				"script[src^=...]": {
+					"map": "function($elem) { $elem.removeAttribute('type') }",
+					"enabled": true
+				}
+			},
+			"swap": {
+				"content": "",
+				"mime": "text/html",
+				"enabled": true
+			},
+			"rewrite": {
+				"map": "function($url, $pattern) {}",
+				"enabled": true
+			},
+			"enabled": true
+		}]
+	}
+
+
+module.exports = class User
 	###
 
 	@get : (name) ->
@@ -39,6 +116,7 @@ class User
 		null
 
 	getFilters: (url) ->
+		console.log "Get filter Request!"
 		rule = @getMatchedRules url
 		if rule and rule.filters
 			return rule.filters
@@ -58,7 +136,7 @@ class User
 
 	# private
 	getMatchedRules: (url) ->
-		for rule in @doc rules
+		for rule in @doc.rules
 			{pattern} = rule
 			if !!~pattern.indexOf 'REGEX'
 				pattern = pattern.substring(6)

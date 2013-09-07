@@ -58,9 +58,8 @@ exports.middleware = (req, res, next) ->
 
 
 	#process hosts
-	if host = req.user?.getHost(fullURL)
-		if host.enabled
-			req.proxyHost = host
+	if (host = req.user?.getHost(fullURL)) and host.enabled
+		req.proxyHost = host
 
 	
 	if port = parseInt(parsedUrl.port)
@@ -68,7 +67,7 @@ exports.middleware = (req, res, next) ->
 
 	# Then rewrite rules
 	b_changeOrigin = false
-	if rewrite = req.user?.getRewrite(fullURL) and rewrite.enabled
+	if (rewrite = req.user?.getRewrite(fullURL)) and rewrite.enabled
 		try
 			do ->
 				mapfn = eval "'use strict'; (#{rewrite.map})"

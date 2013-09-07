@@ -7,6 +7,13 @@ gateapp.configure ->
 	gateapp.use (req, res, next) ->
 		req.fullURL = req.protocol + "://" + req.get('host') + url.parse(req.url).path;
 		next()
+	###
+	gateapp.use (req, res, next) ->
+		res.on 'header', ->
+    		console.trace('HEADERS GOING TO BE WRITTEN')
+  
+  			next();
+  	###
 	gateapp.use require('./lib/middleware/proxy').bufferMiddleware
 	gateapp.use require('./lib/middleware/user_manager').middleware
 	gateapp.use require('./lib/middleware/swap').middleware
