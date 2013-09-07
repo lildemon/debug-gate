@@ -18,7 +18,7 @@ db.get = (id, callback) ->
 			},
 			"filters": [{
 				"selector": "div",
-				"map": "function($outer) { console.log('Hit rule!!'); return 'abc' }",
+				"map": "function($outer) { console.log('Hit rule!!'); return $outer + 'abc' }",
 				"enabled": true
 			}, {
 				"selector": "#def",

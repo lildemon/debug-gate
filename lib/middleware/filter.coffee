@@ -30,16 +30,24 @@ exports.middleware = (req, res, next) ->
 						try
 							mapfn = eval "'use strict'; (#{map})"
 							tr.selectAll selector, ($elem) ->
-
+								console.log "Element select occured"
 								if !!~map.indexOf '$elem'
 									mapfn $elem
 
 								else
 									is_outer = !!~map.indexOf '$outer'
-									ws = $elem.createWriteStream(outer: is_outer)
+									#console.log "ISOUTER? #{is_outer} #{JSON.stringify($elem)}"
+									
+									
 									concator = concat (str) ->  #Content Stream Collected
-										ws.end mapfn str
-									$elem.createReadStream(outer: is_outer).pipe concator
+										console.log str
+										console.log "Inner or outer map function"
+										elstream.end mapfn str.toString()
+
+									elstream = $elem.createStream(outer: is_outer)
+									elstream.pipe concator
+									
+									
 
 						catch
 							console.log """
@@ -54,24 +62,52 @@ exports.middleware = (req, res, next) ->
 				console.log "Trumpet initialized and processing data"
 				#console.log data
 				lastEncoding = encoding
-				tr.write data
+				tr.write '<div>data</div><a />##', 'utf-8'
 
 			res.end = (data, encoding) ->
 				# Restore writeHead
+				console.log "On recieving res.end"
 				lastEncoding = encoding
 				res.writeHead = _writeHead
-				tr.end data
+				tr.end 'data', 'utf-8'
 
-			tr.pipe concat (str) ->
+			tr.pipe concat (buf) ->
 				console.log 'Result concated'
+				#console.log str = str.toString()
+
 				if head_wroted.headers
 					delete head_wroted.headers['Content-Length']
+					delete head_wroted.headers['Content-Encoding']
+				res.removeHeader 'content-encoding'
+				res.removeHeader 'content-length'
+				###
+				console.log "Before: " + buf
+				res.setHeader 'content-length', buf.length
+				console.log "After: " + buf
+				
+				#if head_wroted.statusCode
+				#	_writeHead.call res, head_wroted.statusCode, head_wroted.headers
+				###
+				res.end = _end
+				res.write = _write
+				
 
-				res.setHeader 'content-length', Buffer.byteLength(str, lastEncoding)
+
 				if head_wroted.statusCode
-					_writeHead.call res, head_wroted.statusCode, head_wroted.headers
+					console.log "Have Status!"
+					res.send head_wroted.statusCode, buf
+				else
+					res.send buf
 
-				_end.call res, str, lastEncoding
+				
+
+
+				
+				#res.end str
+
+				#_end.call res, str, lastEncoding
+				#console.log str
+				#res.send str
 
 				# TODO: or maybe use express' send()
 				# res.send str
