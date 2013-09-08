@@ -7,12 +7,18 @@
 	<script src="js/angular.js"></script>
 	<script src="js/ui-bootstrap-tpls-0.5.0.js"></script>
 	<script src="js/admin.js"></script>
+	<style>
+		textarea { font-family: Consolas, Courier;}
+	</style>
 </head>
-<body ng-app="admin">
+<body ng-app="admin" ng-controller="userController">
 	<div class="well">
 		<h1>DebugGate 用户规则控制DEMO (Alpha)</h1>
-		<div ng-controller="userController">
+		<div>
 			<p>
+
+							<button class="btn btn-success" ng-click="newRule()">插入新规则</button>
+
 						    <button type="button" class="btn btn-primary" ng-model="oneAtATime" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
 						        一次只显示一条规则细节
 						    </button>
@@ -28,13 +34,25 @@
 
 		    			<button class='btn' ng-click="printRules($index)">在终端打印当前规则</button>
 
+		    			<button class='btn' ng-click="moveUp($index)">上移</button>
+
+		    			<button class='btn' ng-click="moveDown($index)">下移</button>
+
+		    			<button class="btn btn-danger" ng-click="removeRule($index)">删除当前规则</button>
+
 		    		</legend>
 		    		<p><label>区配URL： <input type="text" ng-model="rule.pattern"></label></p>
 		    		<p><label><em class="label label-important">4</em>修改HOST： <input type="text" ng-model="rule.host.ip"></label> 是否启用：<input type="checkbox" ng-model="rule.host.enabled"></p>
 
 		    		<p><label><em class="label label-important">3</em>修改过滤器（filter)： <textarea ng-model="rule.filter.map" style="width: 500px" rows="6"></textarea> </label> 是否启用：<input type="checkbox" ng-model="rule.filter.enabled"></p>
 
-		    		<p><label><em class="label label-important">1</em>替换内容（swap)： <textarea ng-model="rule.swap.content" style="width: 500px" rows="6"></textarea> </label> 是否启用：<input type="checkbox" ng-model="rule.swap.enabled"></p>
+		    		<p><label style="float: left"><em class="label label-important">1</em>替换内容（swap)： <textarea ng-model="rule.swap.content" style="width: 500px" rows="6"></textarea> </label>
+
+					MIME: <input type="text" ng-model="rule.swap.mime">
+<br>
+		    		 是否启用：<input type="checkbox" ng-model="rule.swap.enabled">
+					<br>
+							    		</p>
 
 		    		<p><label><em class="label label-important">2</em>URL重写 (rewrite)： <textarea ng-model="rule.rewrite.map" style="width: 500px" rows="6"></textarea> </label> 是否启用：<input type="checkbox" ng-model="rule.rewrite.enabled"></p>
 		    		
@@ -44,6 +62,6 @@
 		  </accordion>
 		</div>
 	</div>
-
+<button style="position:fixed; right:10%; bottom: 5%;" class="btn btn-primary" ng-click="saveRules()">保存所有规则</button>
 </body>
 </html>

@@ -4,53 +4,16 @@ urlpattern = require 'url-pattern'
 
 users = {}
 
-# insert fake data to test trumpet
+# insert fake data to test
+path = require 'path'
+jf = require 'jsonfile'
+
+
 db.get = (id, callback) ->
-	callback null, {
-		"_id": "ronhng",
-		"_rev": "2-de30add1ef49e14e17d1c05edcc35fef",
-		"password": "mypass",
-		"rules": [{
-			"pattern": "*.cnbeta.com/*",
-			"host": {
-				"ip": "192.168.1.4",
-				"enabled": false
-			},
-			"filter": {
-				"map": "function($){$('a').text('荣荣'); }",
-				"enabled": true
-			},
-			"swap": {
-				"content": "abc",
-				"mime": "text/html",
-				"enabled": false
-			},
-			"rewrite": {
-				"map": "function($url) { return 'http://www.91.com/' }",
-				"enabled": true
-			},
-			"enabled": true
-		}, {
-			"pattern": "REGEX:(.*)\\.google\\.com",
-			"host": {
-				"ip": "207.97.227.245",
-				"enabled": false
-			},
-			"filter": {
-				"map": "function($){$('title').text('荣荣')}"
-			},
-			"swap": {
-				"content": "",
-				"mime": "text/html",
-				"enabled": false
-			},
-			"rewrite": {
-				"map": "function($url, $pattern) {}",
-				"enabled": false
-			},
-			"enabled": true
-		}]
-	}
+	callback null, jf.readFileSync(path.resolve(__dirname, '../store.json'));
+
+db.insert = (obj) ->
+	jf.writeFileSync(path.resolve(__dirname, '../store.json'), obj);
 
 
 module.exports = class User
@@ -104,6 +67,13 @@ module.exports = class User
 		db.insert @doc, @doc._id, (err, body) =>
 			return console.log "Error when saving user: #{err.message}" if err
 			@doc._rev = body.rev
+
+	saveRules: (rules) ->
+		@doc.rules = rules
+		@save()
+
+	getRules: ->
+		@doc.rules
 
 	# private
 	getMatchedRules: (url) ->

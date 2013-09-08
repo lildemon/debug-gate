@@ -1,0 +1,111 @@
+{
+  "_id": "ronhng",
+  "_rev": "2-de30add1ef49e14e17d1c05edcc35fef",
+  "password": "mypass",
+  "rules": [
+    {
+      "pattern": "REGEX:(.*)\\.google\\.com",
+      "host": {
+        "ip": "207.97.227.245",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($){$('title').text('荣荣')}"
+      },
+      "swap": {
+        "content": "",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url, $pattern) {}",
+        "enabled": false
+      },
+      "enabled": false
+    },
+    {
+      "pattern": "http://pcres.sj.91.com/pcx/resources/App/Public/new/css/style.css",
+      "enabled": true,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) { \n\n }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "body { background: #F00; }",
+        "mime": "text/css",
+        "enabled": true
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    },
+    {
+      "pattern": "*.91.com*",
+      "enabled": false,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) {  \n\n    $('a').text(\"OK!\");\n    $('link[href=\"http://pcres.sj.91.com/pcx/resources/App/Public/new/css/style.css\"]').attr('href', '/style.css');\n }",
+        "enabled": true
+      },
+      "swap": {
+        "content": "替换内容",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url){  return 'http://www.qq.com/' }",
+        "enabled": false
+      }
+    },
+    {
+      "pattern": "*.cnbeta.com/*",
+      "host": {
+        "ip": "192.168.1.4",
+        "enabled": true
+      },
+      "filter": {
+        "map": "function($){$('a').text('荣荣'); }",
+        "enabled": true
+      },
+      "swap": {
+        "content": "abc",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url) { return 'http://www.91.com/' }",
+        "enabled": false
+      },
+      "enabled": true
+    },
+    {
+      "pattern": "www.example.com",
+      "enabled": true,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) {  }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "替换内容",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    }
+  ]
+}

@@ -30,16 +30,30 @@ console.log "Gate Started on port 8388"
 
 adminapp = express()
 adminapp.configure ->
-	adminapp.use express.cookieSession()
+	#adminapp.use express.cookieSession()
 	# bodyparser
+	adminapp.use '/static', express.static(__dirname + '/lib/static')
+	#configure for DEMO
+	adminapp.use(express.bodyParser())
+	adminapp.use require('./lib/middleware/user_manager').middleware
+
 
 # TODO: Route reconfigure, using dependency inject etc..
 adminapp.get '/', (req, res, next) ->
-	unless req.session?.user
-		return res.redirect '/login'
+	#unless req.session?.user
+	#	return res.redirect '/login'
+
+	res.redirect '/static/admin.html'
 
 	# 进入配置界面
 	# db.get 'document'
+
+adminapp.get '/rules', (req, res) ->
+	res.send(req.user.getRules())
+
+adminapp.post '/saverules', (req, res) ->
+	req.user.saveRules(req.body)
+	res.end('success')
 
 adminapp.get '/login', (req, res, next) ->
 
@@ -66,3 +80,5 @@ adminapp.get '/bind-ip', (req, res) ->
 
 	else
 		res.redirect '/login'
+
+adminapp.listen 8688

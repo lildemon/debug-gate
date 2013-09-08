@@ -21,6 +21,8 @@
     "through": "~2.3.4",
     "pause-stream": "0.0.10",
     "cornet": "~0.1.5",
-    "cheerio": "~0.12.2"
+    "cheerio": "~0.12.2",
+    "json-store": "0.0.1",
+    "jsonfile": "~1.0.1"
   }
 }

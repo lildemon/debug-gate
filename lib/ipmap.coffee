@@ -28,7 +28,7 @@ exports.setUserForIp = (ip, user, callback) ->
 
 
 exports.getUserForIp = (ip, callback) ->
-	console.log "Requesting for ip: #{ip}"
+	console.log "当前用户IP是: #{ip}"
 	if typeof map[ip] is "undefined"
 		fetchIp ip, ->
 			if map[ip]
