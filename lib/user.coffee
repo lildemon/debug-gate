@@ -11,23 +11,23 @@ db.get = (id, callback) ->
 		"_rev": "2-de30add1ef49e14e17d1c05edcc35fef",
 		"password": "mypass",
 		"rules": [{
-			"pattern": "*.cnbeta.com*",
+			"pattern": "*.baidu.com/*",
 			"host": {
 				"ip": "192.168.1.4",
 				"enabled": false
 			},
 			"filters": [{
-				"selector": "div",
-				"map": "function($outer) { console.log('Hit rule!!'); return $outer + 'abc' }",
+				"selector": "a",
+				"map": "function($inner) { return '荣荣' }",
 				"enabled": true
 			}, {
-				"selector": "#def",
-				"map": "function($inner) { return $inner }",
-				"enabled": true
-			}, {
-				"selector": "img[src~=http://...]",
-				"map": "function($elem) { $elem.setAttribute('src', 'myimg') }",
+				"selector": "script",
+				"map": "function($inner) { return 'console.log \"abc\"' }",
 				"enabled": false
+			}, {
+				"selector": "li",
+				"map": "function($elem) { $elem.setAttribute('frontkit', 'myimg') }",
+				"enabled": true
 			}, {
 				"selector": "script[src^=...]",
 				"map": "function($elem) { $elem.removeAttribute('type') }",
@@ -46,35 +46,35 @@ db.get = (id, callback) ->
 		}, {
 			"pattern": "REGEX:(.*)\\.google\\.com",
 			"host": {
-				"ip": "192.168.1.4",
+				"ip": "207.97.227.245",
 				"enabled": true
 			},
 			"filters": {
 				"div#abc": {
 					"map": "function($outer) { return $outer }",
-					"enabled": true
+					"enabled": false
 				},
 				"#def": {
 					"map": "function($inner) { return $inner }",
-					"enabled": true
+					"enabled": false
 				},
 				"img[src~=http://...]": {
 					"map": "function($elem) { $elem.setAttribute('src', 'myimg') }",
-					"enabled": true
+					"enabled": false
 				},
 				"script[src^=...]": {
 					"map": "function($elem) { $elem.removeAttribute('type') }",
-					"enabled": true
+					"enabled": false
 				}
 			},
 			"swap": {
 				"content": "",
 				"mime": "text/html",
-				"enabled": true
+				"enabled": false
 			},
 			"rewrite": {
 				"map": "function($url, $pattern) {}",
-				"enabled": true
+				"enabled": false
 			},
 			"enabled": true
 		}]

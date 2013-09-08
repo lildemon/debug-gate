@@ -7,14 +7,8 @@ url = require 'url'
 
 proxy.on 'proxyError', (err, req, res) ->
 	# TODO: Invock Express' Error Handling method
-	console.log "Proxy Error Catched for url: #{req.originalUrl}"
-	if res._header
-		res.destroy()
-	else
-		res.writeHead(500, { 'Content-Type': 'text/html' });
-		#res.end('An error has occurred: ' + JSON.stringify(err))
-		res.end """
-			<!DOCTYPE html>
+	ehtml = """
+		<!DOCTYPE html>
 			<html>
 				<head><meta charset="UTF-8" /><title>网关出错了</title></head>
 				<body>
@@ -30,7 +24,15 @@ proxy.on 'proxyError', (err, req, res) ->
 					</dl>
 				</body>
 			</html>
-		"""
+	"""
+	console.log "Proxy Error Catched for url: #{req.originalUrl}"
+	if res._header
+		res.end ehtml
+		res.destroy()
+	else
+		res.writeHead(500, { 'Content-Type': 'text/html' });
+		#res.end('An error has occurred: ' + JSON.stringify(err))
+		res.end ehtml
 
 
 exports.bufferMiddleware = (req, res, next) ->
@@ -59,7 +61,7 @@ exports.middleware = (req, res, next) ->
 
 	#process hosts
 	if (host = req.user?.getHost(fullURL)) and host.enabled
-		req.proxyHost = host
+		req.proxyHost = host.ip
 
 	
 	if port = parseInt(parsedUrl.port)
@@ -76,6 +78,7 @@ exports.middleware = (req, res, next) ->
 				req.proxyHost = req.rewriteHost = parsedUrl.hostname
 				req.proxyPort = parsedUrl.port || req.proxyPort
 				b_changeOrigin = true
+				console.log "URL Rewrited"
 		catch
 			console.log """
 				Rewrite function of URL #{req.originalUrl} Parse Failed.
@@ -109,6 +112,8 @@ exports.middleware = (req, res, next) ->
 		#console.log "No 'Connection header'"
 		req.headers['Connection'] = 'keep-alive'
 
+
+	console.log "Final req.proxyHost is: #{req.proxyHost}"
 	proxy.proxyRequest req, res,
 		host: req.proxyHost || req.host
 		port: req.proxyPort || 80

@@ -1,6 +1,6 @@
 trumpet = require 'trumpet'
 concat = require 'concat-stream'
-
+zlib = require 'zlib'
 
 exports.middleware = (req, res, next) ->
 	if req.user?
@@ -11,6 +11,7 @@ exports.middleware = (req, res, next) ->
 		console.log 'GET FILTER SUCCESS!'
 
 		_write = res.write
+		_end = res.end
 
 		# Prevent headers from being finalized
 		_writeHead = res.writeHead
@@ -21,8 +22,18 @@ exports.middleware = (req, res, next) ->
 			head_wroted.statusCode = statusCode
 			head_wroted.headers = headers
 
+		writeHeadBack = ->
+			res.writeHead = _writeHead
+			
+			if head_wroted.statusCode
+				res.writeHead head_wroted.statusCode, head_wroted.headers
+
 		trumplize = ->
-			tr = trumpet()
+			streamer = tr = trumpet()
+			if (res.getHeader 'Content-Encoding') is 'gzip'
+				console.log "Creating gzip Streamer"
+				streamer = zlib.createGunzip()
+				streamer.pipe(tr)
 			for filter in filters
 				do (filter) ->
 					{selector, map, enabled} = filter
@@ -40,9 +51,12 @@ exports.middleware = (req, res, next) ->
 									
 									
 									concator = concat (str) ->  #Content Stream Collected
-										console.log str
+										#console.log str
 										console.log "Inner or outer map function"
-										elstream.end mapfn str.toString()
+										result = if str? then str.toString() else ''
+										result = mapfn result
+										#result = mapfn str.toString()
+										elstream.end result
 
 									elstream = $elem.createStream(outer: is_outer)
 									elstream.pipe concator
@@ -54,42 +68,38 @@ exports.middleware = (req, res, next) ->
 								Map Function of URL #{req.fullURL} Parse Failed \n
 								In Selector: #{selector}
 							"""
-			_end = res.end
 			
-			lastEncoding = null
+			
+			first_write = false
+			res.write = (data) ->
+				console.log "Trumpet res.write"
+				unless first_write
+					first_write = true
+					res.removeHeader 'content-encoding'
+					res.removeHeader 'content-length'
+					res.type 'html'
+					_writeHead.call res, head_wroted.statusCode or 200
 
-			res.write = (data, encoding) ->
-				console.log "Trumpet initialized and processing data"
-				#console.log data
-				lastEncoding = encoding
-				tr.write '<div>data</div><a />##', 'utf-8'
+				streamer.write data
 
 			res.end = (data, encoding) ->
-				# Restore writeHead
-				console.log "On recieving res.end"
-				lastEncoding = encoding
-				res.writeHead = _writeHead
-				tr.end 'data', 'utf-8'
-
-			tr.pipe concat (buf) ->
-				console.log 'Result concated'
-				#console.log str = str.toString()
-
-				if head_wroted.headers
-					delete head_wroted.headers['Content-Length']
-					delete head_wroted.headers['Content-Encoding']
-				res.removeHeader 'content-encoding'
-				res.removeHeader 'content-length'
-				###
-				console.log "Before: " + buf
-				res.setHeader 'content-length', buf.length
-				console.log "After: " + buf
 				
-				#if head_wroted.statusCode
-				#	_writeHead.call res, head_wroted.statusCode, head_wroted.headers
-				###
+				res.writeHead = _writeHead
 				res.end = _end
 				res.write = _write
+				streamer.end data
+
+
+			###
+			tr.pipe concat (buf) ->
+
+				
+				#if head_wroted.headers
+				#	delete head_wroted.headers['Content-Length']
+				#	delete head_wroted.headers['Content-Encoding']
+				
+
+				# We don't have encoding anymore and length won't match
 				
 
 
@@ -97,30 +107,48 @@ exports.middleware = (req, res, next) ->
 					console.log "Have Status!"
 					res.send head_wroted.statusCode, buf
 				else
+					console.log "Data gathered call send"
 					res.send buf
+			
 
-				
+			###
+			tr.on 'data', (data) ->
+				_write.call res, data
+
+			tr.on 'end', (data) ->
+				_end.call res, data
+			
 
 
-				
-				#res.end str
-
-				#_end.call res, str, lastEncoding
-				#console.log str
-				#res.send str
-
-				# TODO: or maybe use express' send()
-				# res.send str
-
+		write_called = false
 
 		res.write = (data, encoding) ->
+			write_called = true
+
 			contType = res.getHeader 'Content-Type' || head_wroted.headers?['Content-Type']
 			if contType == 'text/html' or contType == 'text/plain'
+				
 				trumplize()
 				res.write data, encoding
 			else
-				_write.call res, data, encoding # Put back the first chunck of data
+			
+				writeHeadBack()
 				res.write = _write
+				res.end = _end
+				res.write data, encoding # Put back the first chunck of data
+				
+
+
+		res.end = (data, encoding) ->
+			unless write_called
+				console.log "End Called Directly"
+				res.write = _write
+				res.end = _end
+				writeHeadBack()
+				res.end data
+			else
+				throw "In Filter Middleware: Custom res.end called."
+
 
 		next()
 
