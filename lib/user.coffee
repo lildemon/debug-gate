@@ -11,14 +11,14 @@ db.get = (id, callback) ->
 		"_rev": "2-de30add1ef49e14e17d1c05edcc35fef",
 		"password": "mypass",
 		"rules": [{
-			"pattern": "*.baidu.com/*",
+			"pattern": "*",
 			"host": {
 				"ip": "192.168.1.4",
 				"enabled": false
 			},
 			"filters": [{
 				"selector": "a",
-				"map": "function($inner) { return '荣荣' }",
+				"map": "function($elem) { $elem.setAttribute('href', 'http://frontkit.net/') }",
 				"enabled": true
 			}, {
 				"selector": "script",
@@ -27,7 +27,7 @@ db.get = (id, callback) ->
 			}, {
 				"selector": "li",
 				"map": "function($elem) { $elem.setAttribute('frontkit', 'myimg') }",
-				"enabled": true
+				"enabled": false
 			}, {
 				"selector": "script[src^=...]",
 				"map": "function($elem) { $elem.removeAttribute('type') }",

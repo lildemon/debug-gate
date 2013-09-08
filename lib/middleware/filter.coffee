@@ -126,7 +126,7 @@ exports.middleware = (req, res, next) ->
 			write_called = true
 
 			contType = res.getHeader 'Content-Type' || head_wroted.headers?['Content-Type']
-			if contType == 'text/html' or contType == 'text/plain'
+			if !!~contType.indexOf('text/html') or !!~contType.indexOf('text/plain')
 				
 				trumplize()
 				res.write data, encoding

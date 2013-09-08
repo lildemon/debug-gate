@@ -19,6 +19,7 @@
     "url-pattern": "~0.2.1",
     "coffee-script": "~1.6.3",
     "through": "~2.3.4",
-    "pause-stream": "0.0.10"
+    "pause-stream": "0.0.10",
+    "cornet": "~0.1.5"
   }
 }
