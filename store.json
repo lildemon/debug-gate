@@ -24,6 +24,27 @@
       "enabled": false
     },
     {
+      "pattern": "www.example.com",
+      "enabled": false,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) {  }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "替换内容",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    },
+    {
       "pattern": "http://pcres.sj.91.com/pcx/resources/App/Public/new/css/style.css",
       "enabled": true,
       "host": {
@@ -46,7 +67,7 @@
     },
     {
       "pattern": "*.91.com*",
-      "enabled": false,
+      "enabled": true,
       "host": {
         "ip": "1.2.3.4",
         "enabled": false
@@ -56,9 +77,9 @@
         "enabled": true
       },
       "swap": {
-        "content": "替换内容",
+        "content": "<h1>被收购啦！！</h1>",
         "mime": "text/html",
-        "enabled": false
+        "enabled": true
       },
       "rewrite": {
         "map": "function($url){  return 'http://www.qq.com/' }",
@@ -69,10 +90,10 @@
       "pattern": "*.cnbeta.com/*",
       "host": {
         "ip": "192.168.1.4",
-        "enabled": true
+        "enabled": false
       },
       "filter": {
-        "map": "function($){$('a').text('荣荣'); }",
+        "map": "function($){$('a').text('HRHRHRHRHR'); }",
         "enabled": true
       },
       "swap": {
@@ -85,27 +106,6 @@
         "enabled": false
       },
       "enabled": true
-    },
-    {
-      "pattern": "www.example.com",
-      "enabled": true,
-      "host": {
-        "ip": "1.2.3.4",
-        "enabled": false
-      },
-      "filter": {
-        "map": "function($) {  }",
-        "enabled": false
-      },
-      "swap": {
-        "content": "替换内容",
-        "mime": "text/html",
-        "enabled": false
-      },
-      "rewrite": {
-        "map": "function($url){  }",
-        "enabled": false
-      }
     }
   ]
 }

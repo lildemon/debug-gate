@@ -115,7 +115,7 @@ exports.middleware = (req, res, next) ->
 
 
 	console.log "正在请求: #{req.proxyHost || req.host}"
-	console.log "请求地址为：req.fullURL"
+	console.log "请求地址为：#{req.fullURL}"
 	proxy.proxyRequest req, res,
 		host: req.proxyHost || req.host
 		port: req.proxyPort || 80
