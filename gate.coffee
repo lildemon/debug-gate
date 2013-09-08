@@ -17,7 +17,7 @@ gateapp.configure ->
 	gateapp.use require('./lib/middleware/proxy').bufferMiddleware
 	gateapp.use require('./lib/middleware/user_manager').middleware
 	gateapp.use require('./lib/middleware/swap').middleware
-	gateapp.use require('./lib/middleware/filter').middleware
+	gateapp.use require('./lib/middleware/cheerio').middleware
 	gateapp.use require('./lib/middleware/proxy').middleware
 
 

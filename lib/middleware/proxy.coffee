@@ -72,6 +72,7 @@ exports.middleware = (req, res, next) ->
 	if (rewrite = req.user?.getRewrite(fullURL)) and rewrite.enabled
 		try
 			do ->
+				console.log "Rewrite Rule!"
 				mapfn = eval "'use strict'; (#{rewrite.map})"
 				fullURL = req.url = mapfn fullURL
 				parsedUrl = url.parse fullURL

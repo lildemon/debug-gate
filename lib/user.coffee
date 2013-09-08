@@ -11,61 +11,33 @@ db.get = (id, callback) ->
 		"_rev": "2-de30add1ef49e14e17d1c05edcc35fef",
 		"password": "mypass",
 		"rules": [{
-			"pattern": "*",
+			"pattern": "*.cnbeta.com/*",
 			"host": {
 				"ip": "192.168.1.4",
 				"enabled": false
 			},
-			"filters": [{
-				"selector": "a",
-				"map": "function($elem) { $elem.setAttribute('href', 'http://frontkit.net/') }",
+			"filter": {
+				"map": "function($){$('a').text('荣荣'); }",
 				"enabled": true
-			}, {
-				"selector": "script",
-				"map": "function($inner) { return 'console.log \"abc\"' }",
-				"enabled": false
-			}, {
-				"selector": "li",
-				"map": "function($elem) { $elem.setAttribute('frontkit', 'myimg') }",
-				"enabled": false
-			}, {
-				"selector": "script[src^=...]",
-				"map": "function($elem) { $elem.removeAttribute('type') }",
-				"enabled": false
-			}],
+			},
 			"swap": {
-				"content": "",
+				"content": "abc",
 				"mime": "text/html",
 				"enabled": false
 			},
 			"rewrite": {
-				"map": "function($url, $pattern) {}",
-				"enabled": false
+				"map": "function($url) { return 'http://www.91.com/' }",
+				"enabled": true
 			},
 			"enabled": true
 		}, {
 			"pattern": "REGEX:(.*)\\.google\\.com",
 			"host": {
 				"ip": "207.97.227.245",
-				"enabled": true
+				"enabled": false
 			},
-			"filters": {
-				"div#abc": {
-					"map": "function($outer) { return $outer }",
-					"enabled": false
-				},
-				"#def": {
-					"map": "function($inner) { return $inner }",
-					"enabled": false
-				},
-				"img[src~=http://...]": {
-					"map": "function($elem) { $elem.setAttribute('src', 'myimg') }",
-					"enabled": false
-				},
-				"script[src^=...]": {
-					"map": "function($elem) { $elem.removeAttribute('type') }",
-					"enabled": false
-				}
+			"filter": {
+				"map": "function($){$('title').text('荣荣')}"
 			},
 			"swap": {
 				"content": "",
@@ -115,11 +87,10 @@ module.exports = class User
 			return rule.rewrite
 		null
 
-	getFilters: (url) ->
-		console.log "Get filter Request!"
+	getFilter: (url) ->
 		rule = @getMatchedRules url
-		if rule and rule.filters
-			return rule.filters
+		if rule and rule.filter
+			return rule.filter
 		null
 
 	getSwap: (url) ->
