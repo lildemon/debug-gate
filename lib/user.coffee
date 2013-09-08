@@ -108,18 +108,19 @@ module.exports = class User
 	# private
 	getMatchedRules: (url) ->
 		for rule in @doc.rules
-			{pattern} = rule
-			if !!~pattern.indexOf 'REGEX'
-				pattern = pattern.substring(6)
-				try
-					if url.match new RegExp(pattern)
+			if rule.enabled
+				{pattern} = rule
+				if !!~pattern.indexOf 'REGEX'
+					pattern = pattern.substring(6)
+					try
+						if url.match new RegExp(pattern)
+							return rule
+					catch
+						continue
+				else
+					pattern = urlpattern pattern
+					if pattern.match url
 						return rule
-				catch
-					continue
-			else
-				pattern = urlpattern pattern
-				if pattern.match url
-					return rule
 		null
 
 

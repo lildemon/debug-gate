@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DebugGate 控制面板</title>
+	<link rel="stylesheet" href="css/bootstrap-combined.min.css">
+	<script src="js/angular.js"></script>
+	<script src="js/ui-bootstrap-tpls-0.5.0.js"></script>
+	<script src="js/admin.js"></script>
+</head>
+<body ng-app="admin">
+	<div class="well">
+		<h1>DebugGate 用户规则控制DEMO (Alpha)</h1>
+		<div ng-controller="userController">
+			<p>
+						    <button type="button" class="btn btn-primary" ng-model="oneAtATime" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+						        一次只显示一条规则细节
+						    </button>
+
+						    <button class='btn' ng-click="printRules()">在终端打印所有规则</button>
+						</p>
+
+		  <accordion close-others="oneAtATime">
+		    <accordion-group heading="URL规则： {{rule.pattern}} | 当前状态： {{rule.enabled}}" ng-repeat="rule in rules">
+		    	<form class="form-inline">
+		    		<legend>
+		    			设置规则开关 <input type="checkbox" ng-model="rule.enabled">
+
+		    			<button class='btn' ng-click="printRules($index)">在终端打印当前规则</button>
+
+		    		</legend>
+		    		<p><label>区配URL： <input type="text" ng-model="rule.pattern"></label></p>
+		    		<p><label><em class="label label-important">4</em>修改HOST： <input type="text" ng-model="rule.host.ip"></label> 是否启用：<input type="checkbox" ng-model="rule.host.enabled"></p>
+
+		    		<p><label><em class="label label-important">3</em>修改过滤器（filter)： <textarea ng-model="rule.filter.map" style="width: 500px" rows="6"></textarea> </label> 是否启用：<input type="checkbox" ng-model="rule.filter.enabled"></p>
+
+		    		<p><label><em class="label label-important">1</em>替换内容（swap)： <textarea ng-model="rule.swap.content" style="width: 500px" rows="6"></textarea> </label> 是否启用：<input type="checkbox" ng-model="rule.swap.enabled"></p>
+
+		    		<p><label><em class="label label-important">2</em>URL重写 (rewrite)： <textarea ng-model="rule.rewrite.map" style="width: 500px" rows="6"></textarea> </label> 是否启用：<input type="checkbox" ng-model="rule.rewrite.enabled"></p>
+		    		
+		    	</form>
+		    </accordion-group>
+
+		  </accordion>
+		</div>
+	</div>
+
+</body>
+</html>

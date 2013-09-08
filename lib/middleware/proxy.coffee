@@ -120,5 +120,5 @@ exports.middleware = (req, res, next) ->
 		port: req.proxyPort || 80
 		buffer: req.reqbuf
 		enable:
-			xforward: true
+			xforward: false
 		changeOrigin: b_changeOrigin
