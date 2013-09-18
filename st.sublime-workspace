@@ -120,60 +120,26 @@
 	"buffers":
 	[
 		{
-			"file": "proxy_test.coffee",
+			"contents": "\n\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n<meta name=\"keywords\" content=\"\" />\n<meta name=\"description\" content=\"\" />\n<title>排行榜</title>\n<link href=\"http://pcx.sj.91.com/Resources//pic/new/css/style.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />\n<script src=\"http://pcres.sj.91.com/resources/js/jquery-1.7.1.min.js\" type=\"text/javascript\"></script>\n<script type=\"text/javascript\" src=\"http://pcx.sj.91.com/Resources//pic/new/js/common.js\"></script>\n<script src=\"http://pcx.sj.91.com/Resources//pic/new/js/scorlltop.js\" type=\"text/javascript\"></script>\n<script type=\"text/javascript\" src=\"http://pcx.sj.91.com/Resources//pic/new/js/jquery.masonry.js\"></script>\n \n</head>\n \n<body>\n\n<script src=\"http://pcx.sj.91.com/Resources/Pic/New/js/fmselect.js\" type=\"text/javascript\"></script>\n<script type=\"text/javascript\" src=\"http://pcx.sj.91.com/Resources/js/jsrender.js\"></script>\n\n<!--nav-->\n<div class=\"pb_header\">\n	<div class=\"wrapper\">\n        <div class=\"max_wrap\">\n            <div class=\"idx_content\">\n                <div class=\"pb_navs\" id=\"pb_navs\">\n                    \n                    <div class=\"pb_navs_item\">\n                        <a href=\"http://pcx.sj.91.com/pic/new/Index.aspx?platform=Android&resolution=RES_320x480\" class=\"on\">首页</a>\n                    </div>\n                    <div class=\"pb_navs_item\">\n                        <a href=\"http://pcx.sj.91.com/pic/new/Category.aspx?platform=Android&resolution=RES_320x480\">分类</a>\n                    </div>\n                    \n                    <div class=\"pb_navs_item\">\n                        <a href=\"http://pcx.sj.91.com/pic/new/Album.aspx?platform=Android&resolution=RES_320x480\">专题</a>\n                    </div>\n                    <div class=\"pb_navs_item\">\n                        <a href=\"http://pcx.sj.91.com/pic/new/sort.aspx?platform=Android&resolution=RES_320x480\">排行榜</a>\n                    </div>\n                    <div class=\"pb_navs_item\">\n                        <a href=\"http://pcx.sj.91.com/pic/new/luckypicture.aspx?platform=Android&resolution=RES_320x480\">试试手气</a>\n                    </div>\n                    <div class=\"pb_navs_item\">\n                        <a href=\"http://market.sj.91.com/Users/Login.aspx?ReturnUrl=/Default.aspx\"  target=\"_blank\">上传</a>\n                    </div>\n                    \n                    <div class=\"pb_navs_select\">\n                        屏幕选择：\n                        <select>\n                            <option value=\"RES_320x480\" selected=\"selected\">默认</option><option value=\"RES_640x960\" >iPhone 4</option><option value=\"RES_640x1136\" >iPhone 5</option><option value=\"RES_1024x1024\" >iPad</option><option value=\"RES_1440x1280\" >Android</option>\n                        </select>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n<!--/nav-->\n<script type=\"text/javascript\">\n    (function ($) {\n        $.Pic = {\n            MenuOn: function (index) {\n                var menu = $(\".pb_navs_item a\");\n                menu.removeClass(\"on\");\n                menu.each(function (i) {\n                    index == i && $(this).addClass(\"on\");\n                });\n            }\n        }\n    })(jQuery);\n    $(\"select\").fmSelect({\n        template:\n		'<div class=\"selectbtn\" {selectbtn=\"true\"}>' +\n			'<span {selecttextbox=\"true\"}>{selectText}</span>' +\n			'<ul class=\"selectbox\" {optionbox=\"true\"} style=\"display:none;\">{option}</ul>' +\n		'</div>', //结构模板，大括号为模板标记\n        optionWrap: '<li {option=\"true\"} class=\"{optionSelectedCssName}\">{text}</li>', //option循环包裹环境，支持多层包裹，大括号为模板标记\n        selectStateIdName: \"selectstate\", //打开状态下selectbtn的id名称，只需保证不冲突即可\n        selectStateCssName: \"selectstate\", //打开状态下selectbtn样式名，只需保证不冲突即可\n        optionSelectedCssName: \"optionselected\", //选中样式，样式作用在{optionSelectedCssName}\n        selBoxWidAdd: 80, //宽度增幅，即程序自动计算select宽度后加上该值作为新对象的宽度\n        optBoxWidAdd: 80, //宽度增幅，即程序自动计算select宽度后加上该值作为新对象的宽\n        selectedFinish: function ($this, $sBtn, $opBox, w, val) {\n            var pt = \"iPhone\";\n            if (val == \"RES_1440x1280\") {\n                pt = \"Android\";\n            }\n            var href = window.location.href;\n            if (href.indexOf(\"?\") > -1) {\n                if (href.toLowerCase().indexOf(\"resolution=\") > -1) {\n                    href = href.replace(/resolution=[^&]*/gi, \"resolution=\" + val)\n                }\n                else {\n                    href += \"&resolution=\" + val\n                }\n                if (href.toLowerCase().indexOf(\"platform=\") > -1) {\n                    href = href.replace(/platform=[^&]*/gi, \"platform=\" + pt)\n                }\n                else {\n                    href += \"&platform=\" + pt;\n                }\n            }\n            else {\n                href += \"?platform=\" + pt + \"&resolution=\" + val;\n            }\n            window.location = href;\n\n        }\n    });\n    function ShowLoginDialog() {\n    }\n    function HideLoginDialog() {\n    }\n    $.views.converters({\n        pcxurl: function (url) {\n            var hz = url.substring(url.lastIndexOf(\".\"));\n            return url; //url.replace(hz, \"_pcx\" + hz);\n        }\n    });\n</script>\n<!--wrapper-->\n<div class=\"wrapper pad60\" name=\"top\">\n	<div class=\"max_wrap\">\n    	<div class=\"idx_content\">\n            <!--main2-->\n            <div class=\"main\">\n            	<!--menu-->\n                <div class=\"menu clearfix\">\n                	<ul>\n                    	<li><a href=\"http://pcx.sj.91.com/pic/new/sort.aspx?platform=Android&resolution=RES_320x480&sortType=pic_downnum_weekDESC\" class=\"on\" order=\"pic_downnum_weekDESC\">一周最热</a></li>\n                        <li><a href=\"http://pcx.sj.91.com/pic/new/sort.aspx?platform=Android&resolution=RES_320x480&sortType=pic_update_timeDESC\" class=\"\" order=\"pic_update_timeDESC\">最新发布</a></li>\n                    </ul>\n                	<ins></ins>\n                </div>\n                <!--/menu-->\n                <!--top123-->\n                <div class=\"top_wrap clearfix\">\n                	<div class=\"top_con\">\n                      <li class=\"modalLink\" tomodalid=\"#androidmodal\">\n                    	<div class=\"box_pic\">\n                        	<a href=\"#\"><img src=\"http://image.91rb.com/Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-7.png\"\n                             big=\"http://image.91rb.com/Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-7.png\"\n                             alt=\"\" /></a>\n                            <a href=\"#\" class=\"like png\">36503</a>\n                            <a href=\"http://pcx.sj.91.com/pic/all/Controller.ashx?Action=download&platform=Android&resolution=RES_320x480&pic_title=%e7%b2%89%e7%ba%a2%e6%80%a7%e6%84%9f%e7%be%8e%e5%a5%b3&pic_id=Top1.pic_id&src=Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-7.png\" target=\"hiddenIFrame\" class=\"btn png\">下载</a>\n                            <a href=\"http://pcx.sj.91.com/pic/new/sort.aspx?module=Pic&action=setWallpaper&name=%e7%b2%89%e7%ba%a2%e6%80%a7%e6%84%9f%e7%be%8e%e5%a5%b3&resolution=320,480&src=http%3a%2f%2fpcx.sj.91.com%2f&url=http%3a%2f%2fpcx.sj.91.com%2fpic%2fall%2fController.ashx%3fAction%3dReadFile%26CheckCode%3d4ff49d077e7bc13cb2a1c0f89e5bc4d4%26pic_id%3d281595%26pic_title%3d%e7%b2%89%e7%ba%a2%e6%80%a7%e6%84%9f%e7%be%8e%e5%a5%b3%26src%3dWallpaper%2f2012%2f8%2f22%2f197eebba91a94fa29a173d63e4e3f3e9-7.png%26f_id%3d281595\" target=\"hiddenIFrame\" class=\"set png\">设置成壁纸</a>\n                            <a href=\"#0\" class=\"opacity\"></a>\n                            <div class=\"top1 png\">Top<br />1</div>\n                        </div>\n                        </li>\n                    </div>\n                    <div class=\"top_colR clearfix\">\n                       <li class=\"modalLink\" tomodalid=\"#androidmodal\">\n                    	<div class=\"box_pic\">\n                        	<a href=\"#\"><img src=\"http://image.91rb.com/Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-2.png\"\n                             big=\"http://image.91rb.com/Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-2.png\"\n                             alt=\"\" /></a>\n                            <a href=\"#\" class=\"like png\">20870</a>\n                            <a href=\"http://pcx.sj.91.com/pic/all/Controller.ashx?Action=download&platform=Android&resolution=RES_320x480&pic_title=%e7%b2%89%e7%ba%a2%e6%80%a7%e6%84%9f%e7%be%8e%e5%a5%b3&pic_id=281199&src=Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-2.png\" target=\"hiddenIFrame\" class=\"btn png\">下载</a>\n                            <a href=\"http://pcx.sj.91.com/pic/new/sort.aspx?module=Pic&action=setWallpaper&name=%e5%8d%a1%e9%80%9a%e5%8f%af%e7%88%b1%e5%a3%81%e7%ba%b8&resolution=320,480&src=http%3a%2f%2fpcx.sj.91.com%2f&url=http%3a%2f%2fpcx.sj.91.com%2fpic%2fall%2fController.ashx%3fAction%3dReadFile%26CheckCode%3d87c2f0c88b44518d972e8d7a4a9f97df%26pic_id%3d281590%26pic_title%3d%e5%8d%a1%e9%80%9a%e5%8f%af%e7%88%b1%e5%a3%81%e7%ba%b8%26src%3dWallpaper%2f2012%2f8%2f22%2f197eebba91a94fa29a173d63e4e3f3e9-2.png%26f_id%3d281590\" target=\"hiddenIFrame\" class=\"set png\">设置成壁纸</a>\n                            <a href=\"#0\" class=\"opacity\"></a>\n                            <div class=\"top23 png\">Top<br />2</div>\n                        </div>\n                        </li>\n                        <li class=\"mar modalLink\" tomodalid=\"#androidmodal\">\n                        	<div class=\"box_pic\">\n                        	<a href=\"#\"><img src=\"http://image.91rb.com/Wallpaper/2012/8/20/0b4dfa93dc2748b192508d361a4bf98f-7.png\"\n                             big=\"http://image.91rb.com/Wallpaper/2012/8/20/0b4dfa93dc2748b192508d361a4bf98f-7.png\"\n                             alt=\"\" /></a>\n                            <a href=\"#\" class=\"like png\">18167</a>\n                            <a href=\"http://pcx.sj.91.com/pic/all/Controller.ashx?Action=download&platform=Android&resolution=RES_320x480&pic_title=%e7%96%af%e4%ba%86&pic_id=281199&src=Wallpaper/2012/8/20/0b4dfa93dc2748b192508d361a4bf98f-7.png\" target=\"hiddenIFrame\" class=\"btn png\">下载</a>\n                            <a href=\"http://pcx.sj.91.com/pic/new/sort.aspx?module=Pic&action=setWallpaper&name=%e7%96%af%e4%ba%86&resolution=320,480&src=http%3a%2f%2fpcx.sj.91.com%2f&url=http%3a%2f%2fpcx.sj.91.com%2fpic%2fall%2fController.ashx%3fAction%3dReadFile%26CheckCode%3de408cda3b85da8e3df087c2406c23af2%26pic_id%3d281199%26pic_title%3d%e7%96%af%e4%ba%86%26src%3dWallpaper%2f2012%2f8%2f20%2f0b4dfa93dc2748b192508d361a4bf98f-7.png%26f_id%3d281199\" target=\"hiddenIFrame\" class=\"set png\">设置成壁纸</a>\n                            <a href=\"#0\" class=\"opacity\"></a>\n                            <div class=\"top23 png\">Top<br />3</div>\n                        </div>\n                        </li>\n                    </div>\n                </div>\n                <!--/top123-->\n                <!--top4开始-->\n                <div class=\"main\">\n                    <ul class=\"toppic_col\">\n                    \n                        <li class=\"modalLink\" tomodalid=\"#androidmodal\">\n                    	<div class=\"box_pic\">\n                        	<a href=\"#\"><img src=\"http://image.91rb.com/Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-1.png\"\n                             big=\"http://image.91rb.com/Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-1.png\"\n                             alt=\"阳光美女\" /></a>\n                            <a href=\"#\" class=\"like png\">17811</a>\n                            <a href=\"http://pcx.sj.91.com/pic/all/Controller.ashx?Action=download&platform=Android&resolution=RES_320x480&pic_title=%e9%98%b3%e5%85%89%e7%be%8e%e5%a5%b3&pic_id={{:pic_id}}&src=Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-1.png\" target=\"hiddenIFrame\" class=\"btn png\">下载</a>\n                            <a href=\"http://pcx.sj.91.com/pic/new/sort.aspx?module=Pic&action=setWallpaper&name=%e9%98%b3%e5%85%89%e7%be%8e%e5%a5%b3&resolution=320,480&src=http%3a%2f%2fpcx.sj.91.com%2f&url=http%3a%2f%2fpcx.sj.91.com%2fpic%2fall%2fController.ashx%3fAction%3dReadFile%26CheckCode%3d46c04955cfb2ab2fd55dc7f011c3280b%26pic_id%3d281589%26pic_title%3d%e9%98%b3%e5%85%89%e7%be%8e%e5%a5%b3%26src%3dWallpaper%2f2012%2f8%2f22%2f197eebba91a94fa29a173d63e4e3f3e9-1.png%26f_id%3d281589\" target=\"hiddenIFrame\" class=\"set png\">设置成壁纸</a>\n                            <a href=\"#0\" class=\"opacity\"></a>\n                            <div class=\"h_period\">4</div>\n                        </div>\n                        </li>\n                    \n                        <li class=\"modalLink\" tomodalid=\"#androidmodal\">\n                    	<div class=\"box_pic\">\n                        	<a href=\"#\"><img src=\"http://image.91rb.com/Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-6.png\"\n                             big=\"http://image.91rb.com/Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-6.png\"\n                             alt=\"爱\" /></a>\n                            <a href=\"#\" class=\"like png\">17214</a>\n                            <a href=\"http://pcx.sj.91.com/pic/all/Controller.ashx?Action=download&platform=Android&resolution=RES_320x480&pic_title=%e7%88%b1&pic_id={{:pic_id}}&src=Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-6.png\" target=\"hiddenIFrame\" class=\"btn png\">下载</a>\n                            <a href=\"http://pcx.sj.91.com/pic/new/sort.aspx?module=Pic&action=setWallpaper&name=%e7%88%b1&resolution=320,480&src=http%3a%2f%2fpcx.sj.91.com%2f&url=http%3a%2f%2fpcx.sj.91.com%2fpic%2fall%2fController.ashx%3fAction%3dReadFile%26CheckCode%3d0cddd1dab10942ad97e71a06974e127f%26pic_id%3d281594%26pic_title%3d%e7%88%b1%26src%3dWallpaper%2f2012%2f8%2f22%2f197eebba91a94fa29a173d63e4e3f3e9-6.png%26f_id%3d281594\" target=\"hiddenIFrame\" class=\"set png\">设置成壁纸</a>\n                            <a href=\"#0\" class=\"opacity\"></a>\n                            <div class=\"h_period\">5</div>\n                        </div>\n                        </li>\n                    \n                        <li class=\"modalLink\" tomodalid=\"#androidmodal\">\n                    	<div class=\"box_pic\">\n                        	<a href=\"#\"><img src=\"http://image.91rb.com/Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-3.png\"\n                             big=\"http://image.91rb.com/Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-3.png\"\n                             alt=\"iPhone创意手机壁纸\" /></a>\n                            <a href=\"#\" class=\"like png\">16812</a>\n                            <a href=\"http://pcx.sj.91.com/pic/all/Controller.ashx?Action=download&platform=Android&resolution=RES_320x480&pic_title=iPhone%e5%88%9b%e6%84%8f%e6%89%8b%e6%9c%ba%e5%a3%81%e7%ba%b8&pic_id={{:pic_id}}&src=Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-3.png\" target=\"hiddenIFrame\" class=\"btn png\">下载</a>\n                            <a href=\"http://pcx.sj.91.com/pic/new/sort.aspx?module=Pic&action=setWallpaper&name=iPhone%e5%88%9b%e6%84%8f%e6%89%8b%e6%9c%ba%e5%a3%81%e7%ba%b8&resolution=320,480&src=http%3a%2f%2fpcx.sj.91.com%2f&url=http%3a%2f%2fpcx.sj.91.com%2fpic%2fall%2fController.ashx%3fAction%3dReadFile%26CheckCode%3d74a61159726a1d1241db29964edff6fa%26pic_id%3d281591%26pic_title%3diPhone%e5%88%9b%e6%84%8f%e6%89%8b%e6%9c%ba%e5%a3%81%e7%ba%b8%26src%3dWallpaper%2f2012%2f8%2f22%2f197eebba91a94fa29a173d63e4e3f3e9-3.png%26f_id%3d281591\" target=\"hiddenIFrame\" class=\"set png\">设置成壁纸</a>\n                            <a href=\"#0\" class=\"opacity\"></a>\n                            <div class=\"h_period\">6</div>\n                        </div>\n                        </li>\n                    \n                        <li class=\"modalLink\" tomodalid=\"#androidmodal\">\n                    	<div class=\"box_pic\">\n                        	<a href=\"#\"><img src=\"http://image.91rb.com/Wallpaper/2012/8/14/14121eb364934e94b82dda9e58f42f5a-11.png\"\n                             big=\"http://image.91rb.com/Wallpaper/2012/8/14/14121eb364934e94b82dda9e58f42f5a-11.png\"\n                             alt=\"萌猫\" /></a>\n                            <a href=\"#\" class=\"like png\">14643</a>\n                            <a href=\"http://pcx.sj.91.com/pic/all/Controller.ashx?Action=download&platform=Android&resolution=RES_320x480&pic_title=%e8%90%8c%e7%8c%ab&pic_id={{:pic_id}}&src=Wallpaper/2012/8/14/14121eb364934e94b82dda9e58f42f5a-11.png\" target=\"hiddenIFrame\" class=\"btn png\">下载</a>\n                            <a href=\"http://pcx.sj.91.com/pic/new/sort.aspx?module=Pic&action=setWallpaper&name=%e8%90%8c%e7%8c%ab&resolution=320,480&src=http%3a%2f%2fpcx.sj.91.com%2f&url=http%3a%2f%2fpcx.sj.91.com%2fpic%2fall%2fController.ashx%3fAction%3dReadFile%26CheckCode%3d67a3992db6f128366e18922cb00c6f6d%26pic_id%3d280886%26pic_title%3d%e8%90%8c%e7%8c%ab%26src%3dWallpaper%2f2012%2f8%2f14%2f14121eb364934e94b82dda9e58f42f5a-11.png%26f_id%3d280886\" target=\"hiddenIFrame\" class=\"set png\">设置成壁纸</a>\n                            <a href=\"#0\" class=\"opacity\"></a>\n                            <div class=\"h_period\">7</div>\n                        </div>\n                        </li>\n                    \n                        <li class=\"modalLink\" tomodalid=\"#androidmodal\">\n                    	<div class=\"box_pic\">\n                        	<a href=\"#\"><img src=\"http://image.91rb.com/Wallpaper/2012/8/16/4cbef880485b4cc5b3dfcca2b4d9e86b-6.png\"\n                             big=\"http://image.91rb.com/Wallpaper/2012/8/16/4cbef880485b4cc5b3dfcca2b4d9e86b-6.png\"\n                             alt=\"梦幻自然美景\" /></a>\n                            <a href=\"#\" class=\"like png\">13889</a>\n                            <a href=\"http://pcx.sj.91.com/pic/all/Controller.ashx?Action=download&platform=Android&resolution=RES_320x480&pic_title=%e6%a2%a6%e5%b9%bb%e8%87%aa%e7%84%b6%e7%be%8e%e6%99%af&pic_id={{:pic_id}}&src=Wallpaper/2012/8/16/4cbef880485b4cc5b3dfcca2b4d9e86b-6.png\" target=\"hiddenIFrame\" class=\"btn png\">下载</a>\n                            <a href=\"http://pcx.sj.91.com/pic/new/sort.aspx?module=Pic&action=setWallpaper&name=%e6%a2%a6%e5%b9%bb%e8%87%aa%e7%84%b6%e7%be%8e%e6%99%af&resolution=320,480&src=http%3a%2f%2fpcx.sj.91.com%2f&url=http%3a%2f%2fpcx.sj.91.com%2fpic%2fall%2fController.ashx%3fAction%3dReadFile%26CheckCode%3d4fb766264af3826590452aa803ee3436%26pic_id%3d281050%26pic_title%3d%e6%a2%a6%e5%b9%bb%e8%87%aa%e7%84%b6%e7%be%8e%e6%99%af%26src%3dWallpaper%2f2012%2f8%2f16%2f4cbef880485b4cc5b3dfcca2b4d9e86b-6.png%26f_id%3d281050\" target=\"hiddenIFrame\" class=\"set png\">设置成壁纸</a>\n                            <a href=\"#0\" class=\"opacity\"></a>\n                            <div class=\"h_period\">8</div>\n                        </div>\n                        </li>\n                    \n                        <li class=\"modalLink\" tomodalid=\"#androidmodal\">\n                    	<div class=\"box_pic\">\n                        	<a href=\"#\"><img src=\"http://image.91rb.com/Wallpaper/2012/8/14/14121eb364934e94b82dda9e58f42f5a-12.png\"\n                             big=\"http://image.91rb.com/Wallpaper/2012/8/14/14121eb364934e94b82dda9e58f42f5a-12.png\"\n                             alt=\"高清性感美女\" /></a>\n                            <a href=\"#\" class=\"like png\">13580</a>\n                            <a href=\"http://pcx.sj.91.com/pic/all/Controller.ashx?Action=download&platform=Android&resolution=RES_320x480&pic_title=%e9%ab%98%e6%b8%85%e6%80%a7%e6%84%9f%e7%be%8e%e5%a5%b3&pic_id={{:pic_id}}&src=Wallpaper/2012/8/14/14121eb364934e94b82dda9e58f42f5a-12.png\" target=\"hiddenIFrame\" class=\"btn png\">下载</a>\n                            <a href=\"http://pcx.sj.91.com/pic/new/sort.aspx?module=Pic&action=setWallpaper&name=%e9%ab%98%e6%b8%85%e6%80%a7%e6%84%9f%e7%be%8e%e5%a5%b3&resolution=320,480&src=http%3a%2f%2fpcx.sj.91.com%2f&url=http%3a%2f%2fpcx.sj.91.com%2fpic%2fall%2fController.ashx%3fAction%3dReadFile%26CheckCode%3d54e16e9e185c1877404103f2706d9e66%26pic_id%3d280887%26pic_title%3d%e9%ab%98%e6%b8%85%e6%80%a7%e6%84%9f%e7%be%8e%e5%a5%b3%26src%3dWallpaper%2f2012%2f8%2f14%2f14121eb364934e94b82dda9e58f42f5a-12.png%26f_id%3d280887\" target=\"hiddenIFrame\" class=\"set png\">设置成壁纸</a>\n                            <a href=\"#0\" class=\"opacity\"></a>\n                            <div class=\"h_period\">9</div>\n                        </div>\n                        </li>\n                     \n                    </ul>\n                </div>\n                <!--/top4开始-->\n                \n                <!--top11-->\n                \n                <div class=\"main\">\n                    \n                    <!--壁纸列表-->\n                    <ul class=\"zh_list topListC clearfix\" id=\"main\">\n\n                    </ul>\n                    <!--/壁纸列表-->\n                    <!--加载点-->\n                    <div class=\"loading\" id=\"loadMore\">正在努力加载中...</div>\n                    <!--/加载点-->\n                </div>\n                <!--/top11-->\n            </div>\n            <!--/main2-->\n         </div>\n     </div>   \n</div>\n<div style=\"display:none\" id=\"t\">\n</div>\n<script id=\"piclist\" type=\"text/x-jsrender\">\n                        <li class=\"new_poster modalLink\" tomodalid=\"#androidmodal\">\n                    	<div class=\"box_pic\">\n                        	<a href=\"#\"><img src=\"http://image.91rb.com/{{pcxurl:pic_fname}}\"\n                                \n                                big=\"http://image.91rb.com/{{:pic_fname}}\"\n                                alt=\"{{:pic_title}}\" /></a>\n                            <a href=\"#\" class=\"like png\">{{downnum:pic_downnum_week pic_downnum}}</a>\n                            <a href=\"http://pcx.sj.91.com/pic/all/Controller.ashx?Action=download&platform=Android&resolution=RES_320x480&pic_title={{urlEncode: pic_title}}&pic_id={{:pic_id}}&src={{:pic_fname}}\" target=\"hiddenIFrame\" class=\"btn png\">下载</a>\n                            <a href=\"{{:pic_settingDown}}\" class=\"set png\" target=\"hiddenIFrame\">设置成壁纸</a>\n                            <a href=\"#0\" class=\"opacity\"></a>\n                        </div>\n                    </li>\n                </script>\n<!--/wrapper-->\n\n<!--弹窗详细页 iphone4-->\n<div class=\"popbox modal\" id=\"iphonemodal\">\n    <!--close-->\n    <a href=\"###\" class=\"pop_close png\"></a>\n    <!--/close-->\n    <!--popmian-->\n    <div class=\"popmain\">\n        <!--轮播-->\n        <div class=\"lb_wrap\">\n            <div class=\"lb_Con iphone4_width\" id=\"rglSlide1\">\n                <ul class=\"lb_list clearfix\">\n                </ul>\n            </div>\n            <a href=\"#\" class=\"left_lb png\" id=\"iphone_left_lb\"></a>\n            <a href=\"#\" class=\"right_lb png\" id=\"iphone_right_lb\"></a>\n            <!--主屏-->\n            <div class=\"iphone4_m zhuping\">\n            </div>\n            <!--/主屏-->\n            <!--锁屏-->\n            <div class=\"iphone4_s suoping\">\n            </div>\n            <!--/锁屏-->\n        </div>\n        <!--/轮播-->\n        <!--btn-->\n        <div class=\"btn_wrap\">\n            <a href=\"###\" target=\"hiddenIFrame\">设置成壁纸</a> \n            <a href=\"###\" class=\"zhup\" >主屏预览</a> \n            <a href=\"###\" class=\"suop\">锁屏预览</a>\n            <a href=\"###\" class=\"on\" target=\"hiddenIFrame\">下载</a>\n        </div>\n        <div class=\"btn_wrap_bg\"></div>\n        <!--/btn-->\n    </div>\n    <!--/popmian-->\n    <!--黑色透明背景-->\n    <div class=\"overlay\">\n    </div>\n    <!--/黑色透明背景-->\n</div>\n<!--/弹窗详细页 iphone4-->\n\n<!--弹窗详细页 android-->\n<div class=\"popbox modal\" id=\"androidmodal\">\n	<!--close-->\n    <a href=\"###\" class=\"pop_close png\"></a>\n    <!--/close-->\n    <!--popmian-->\n	<div class=\"popmain\">\n    	<!--轮播-->\n        <div class=\"lb_wrap\">\n            <div class=\"lb_Con android_width\" id=\"rglSlide2\">\n                <ul class=\"lb_list clearfix\">\n                    \n                </ul>\n                \n            </div>\n            <a href=\"#\" class=\"left_lb png\" id=\"android_left_lb\"></a>\n            <a href=\"#\" class=\"right_lb png\" id=\"android_right_lb\"></a>\n            <!--主屏-->\n            <div class=\"android_m zhuping\"></div>\n            <!--/主屏-->\n            <!--锁屏-->\n            <div class=\"android_s suoping\"></div>\n            <!--/锁屏-->\n        </div>\n        <!--/轮播-->\n    	<!--btn-->\n        <div class=\"btn_wrap\">\n        	<a href=\"###\" target=\"hiddenIFrame\">设置成壁纸</a>\n            <a href=\"###\" class=\"zhup\">主屏预览</a>\n            <a href=\"###\" class=\"suop\">锁屏预览</a>\n            <a href=\"###\" class=\"on\" target=\"hiddenIFrame\">下载</a>\n        </div>\n        <div class=\"btn_wrap_bg\"></div>\n    	<!--/btn-->\n    </div>\n    <!--/popmian-->\n    <!--黑色透明背景-->\n    <div class=\"overlay\"></div>\n    <!--/黑色透明背景-->\n</div>\n<!--/弹窗详细页 android-->\n\n<!--弹窗详细页 iphone5-->\n<div class=\"popbox modal\" id=\"iphone5modal\">\n	<!--close-->\n    <a href=\"###\" class=\"pop_close png\"></a>\n    <!--/close-->\n    <!--popmian-->\n	<div class=\"popmain\">\n    	<!--轮播-->\n        <div class=\"lb_wrap\">\n            <div class=\"lb_Con iphone5_width\" id=\"rglSlide3\">\n                <ul class=\"lb_list clearfix\">\n                    \n                </ul>\n                \n            </div>\n            <a href=\"#\" class=\"left_lb png\" id=\"iphone5_left_lb\"></a>\n            <a href=\"#\" class=\"right_lb png\" id=\"iphone5_right_lb\"></a>\n            <!--主屏-->\n            <div class=\"iphone5_m zhuping\"></div>\n            <!--/主屏-->\n            <!--锁屏-->\n            <div class=\"iphone5_s suoping\"></div>\n            <!--/锁屏-->\n        </div>\n        <!--/轮播-->\n    	<!--btn-->\n        <div class=\"btn_wrap\">\n        	<a href=\"###\" target=\"hiddenIFrame\">设置成壁纸</a>\n            <a href=\"###\" class=\"zhup\">主屏预览</a>\n            <a href=\"###\" class=\"suop\">锁屏预览</a>\n            <a href=\"###\" class=\"on\" target=\"hiddenIFrame\">下载</a>\n        </div>\n        <div class=\"btn_wrap_bg\"></div>\n    	<!--/btn-->\n    </div>\n    <!--/popmian-->\n    <!--黑色透明背景-->\n    <div class=\"overlay\"></div>\n    <!--/黑色透明背景-->\n</div>\n<!--/弹窗详细页 iphone5-->\n\n<!--弹窗详细页 ipad-->\n<div class=\"popbox modal\" id=\"ipadmodal\">\n	<!--close-->\n    <a href=\"###\" class=\"pop_close png\"></a>\n    <!--/close-->\n    <!--popmian-->\n	<div class=\"popmain\">\n    	<!--轮播-->\n        <div class=\"lb_wrap\">\n            <div class=\"lb_Con ipad_width\" id=\"rglSlide4\">\n                <ul class=\"lb_list clearfix\">\n                    \n                </ul>\n                \n            </div>\n            <a href=\"#\" class=\"left_lb png\" id=\"ipad_left_lb\"></a>\n            <a href=\"#\" class=\"right_lb png\" id=\"ipad_right_lb\"></a>\n            <!--主屏-->\n            <div class=\"ipad_m zhuping\"></div>\n            <!--/主屏-->\n            <!--锁屏-->\n            <div class=\"ipad_s suoping\"></div>\n            <!--/锁屏-->\n        </div>\n        <!--/轮播-->\n    	<!--btn-->\n        <div class=\"btn_wrap\">\n        	<a href=\"###\" target=\"hiddenIFrame\">设置成壁纸</a>\n            <a href=\"###\" class=\"zhup\">主屏预览</a>\n            <a href=\"###\" class=\"suop\">锁屏预览</a>\n            <a href=\"###\" class=\"on\" target=\"hiddenIFrame\">下载</a>\n        </div>\n        <div class=\"btn_wrap_bg\"></div>\n    	<!--/btn-->\n    </div>\n    <!--/popmian-->\n    <!--黑色透明背景-->\n    <div class=\"overlay\"></div>\n    <!--/黑色透明背景-->\n</div>\n<!--/弹窗详细页 ipad-->\n\n<!--弹窗详细页 最后一张-->\n<div class=\"popbox modal\" id=\"lastmodal\">\n    <!--close-->\n    <a href=\"###\" class=\"pop_close png\"></a>\n    <!--/close-->\n    <!--popmian-->\n    <div class=\"popmain\">\n        <!--最后一张提示内容-->\n        <div class=\"last_wrap\">\n            <!--title-->\n            <div class=\"last_tit clearfix\">\n                <h2>\n                    您已经到最后一张</h2>\n                <a href=\"#\" class=\"again_btn\">再看一遍</a>\n            </div>\n            <!--/title-->\n            <!--热门推荐-->\n            <div class=\"tj-wrap\">\n                <div class=\"tj-tit\">\n                    <h3 class=\"titbg tit_l green_bghui\">\n                        壁纸分类</h3>\n                </div>\n                <ul class=\"tj_hot\" id=\"categorylist\">\n                    \n                            <li>\n                                <div class=\"pic_or\">\n                                    <a href=\"http://pcx.sj.91.com/pic/new/Category.aspx?platform=Android&resolution=RES_320x480&cid=177\">\n                                        <img src=\"http://image.91rb.com/Wallpaper/2012/8/13/28c983ab8c8b4127b7dc52ae92aee158-1_118x178.png\"\n                                            alt=\"2012奥运会\" />\n                                    </a><a href=\"#\" class=\"like png\">\n                                        1810</a>\n                                </div>\n                            </li>\n                        \n                            <li>\n                                <div class=\"pic_or\">\n                                    <a href=\"http://pcx.sj.91.com/pic/new/Category.aspx?platform=Android&resolution=RES_320x480&cid=76\">\n                                        <img src=\"http://image.91rb.com/Wallpaper/2012/8/20/0b4dfa93dc2748b192508d361a4bf98f-6_118x178.png\"\n                                            alt=\"熊猫\" />\n                                    </a><a href=\"#\" class=\"like png\">\n                                        9518</a>\n                                </div>\n                            </li>\n                        \n                            <li>\n                                <div class=\"pic_or\">\n                                    <a href=\"http://pcx.sj.91.com/pic/new/Category.aspx?platform=Android&resolution=RES_320x480&cid=93\">\n                                        <img src=\"http://image.91rb.com/Wallpaper/2011/10/25/838a0a2d885a41a3ba96a43a7adfb5a4-1_118x178.jpg\"\n                                            alt=\"不明飞行物\" />\n                                    </a><a href=\"#\" class=\"like png\">\n                                        15667</a>\n                                </div>\n                            </li>\n                        \n                            <li>\n                                <div class=\"pic_or\">\n                                    <a href=\"http://pcx.sj.91.com/pic/new/Category.aspx?platform=Android&resolution=RES_320x480&cid=23\">\n                                        <img src=\"http://image.91rb.com/Wallpaper/2012/8/22/197eebba91a94fa29a173d63e4e3f3e9-10_118x178.png\"\n                                            alt=\"足球宝贝\" />\n                                    </a><a href=\"#\" class=\"like png\">\n                                        9443</a>\n                                </div>\n                            </li>\n                        \n                </ul>\n            </div>\n            <!--/热门推荐-->\n            <!--专辑推荐-->\n            <div class=\"tj-wrap\">\n                <div class=\"tj-tit\">\n                    <h3 class=\"titbg tit_l or_bghui\">\n                        专辑推荐</h3>\n                </div>\n                <ul class=\"tj_zj\" id=\"taglist\">\n                    \n                            <li>\n                                <div class=\"pic_or\">\n                                    <a href=\"http://pcx.sj.91.com/pic/new/AlbumList.aspx?platform=Android&resolution=RES_320x480&id=4386\">\n                                        <img src=\"\" alt=\"粉色\" />\n                                        <div class=\"opy\">\n                                            粉色</div>\n                                    </a>\n                                </div>\n                            </li>\n                        \n                </ul>\n            </div>\n            <!--/专辑推荐-->\n        </div>\n        <!--/最后一张提示内容-->\n    </div>\n    <!--/popmian-->\n    <!--黑色透明背景-->\n    <div class=\"overlay\">\n    </div>\n    <!--/黑色透明背景-->\n</div>\n<!--/弹窗详细页 最后一张-->\n<script type=\"text/javascript\">\n    !function ($) {\n        var detailItem = [], curModal;\n        $.DetailModal = {\n            LastPage: function () { //加载最后一页\n                $.ajax({\n                    type: \"GET\",\n                    url: \"http://pcx.sj.91.com/Pic/New/Controller.ashx?Action=lastmodal&callback=?\",\n                    dataType: \"json\",\n                    success: function (data) {\n                        if (data) {\n                            var html = $(\"#CategoryListTemplate\").render(data.categorylist);\n                            $('#categorylist').html(html);\n                            html = $(\"#TagListTemplate\").render(data.taglist);\n                            $('#taglist').html(html);\n                            \n                        }\n                    },\n                    error: function (XMLHttpRequest, textStatus, errorThrown) {\n\n                    }\n                });\n            },\n            ShowDetail: function (o) {//打开弹窗后加载图片数据\n                o.LoadImgs();\n            },\n            SettingBtn: function (i) {//设置(设置成壁纸,下载)按钮href，i为当前壁纸位置\n                var btns = $(\".btn_wrap a\", curModal);\n                btns.eq(0).attr(\"href\", detailItem[i].seturl);\n                btns.eq(3).attr(\"href\", detailItem[i].downurl);\n            },\n            InitModal: function () { //初始化模态窗口\n                $('.main').modal({\n                    trigger: '.modalLink',          // id or class of link or button to trigger modal\n                    olay: 'div.overlay',             // id or class of overlay\n                    modals: 'div.modal',             // id or class of modal\n                    animationEffect: 'slideDown',   // overlay effect | slideDown or fadeIn | default=fadeIn\n                    animationSpeed: 400,            // speed of overlay in milliseconds | default=400\n                    moveModalSpeed: 'slow',         // speed of modal movement when window is resized | slow or fast | default=false\n                    //background: 'a2d3cd',           // hexidecimal color code - DONT USE #\n                    opacity: 0.7,                   // opacity of modal |  0 - 1 | default = 0.8\n                    openOnLoad: false,              // open modal on page load | true or false | default=false\n                    docClose: true,                 // click document to close | true or false | default=true    \n                    closeByEscape: true,            // close modal by escape key | true or false | default=true\n                    moveOnScroll: true,             // move modal when window is scrolled | true or false | default=false\n                    resizeWindow: true,             // move modal when window is resized | true or false | default=false\n                    close: '.pop_close',               // id or class of close button\n                    openCallBack: $.DetailModal.ShowDetail\n                });\n\n                //阻止事件冒泡(阻止\"设置成壁纸,下载\"点击事件后，触发模态事件)\n                $(\".oprationbtn\").click(function (event) {\n                    event.stopPropagation();\n                });\n            }\n        };\n        $.fn.LoadImgs = function () {\n            var $this = $(this);\n            curModal = $($this.attr(\"tomodalid\"));\n\n            detailItem = [];\n\n            var $thisa = $this.find(\"a\");\n            var item = {\n                img: $this.find(\"img\").attr(\"big\") || $this.find(\"img\").attr(\"src\"),\n                seturl: $thisa.eq(3).attr(\"href\"),\n                downurl: $thisa.eq(2).attr(\"href\")\n            };\n            detailItem.push(item);\n		\n            var html = $(\"#DetailImgTemplate\").render(detailItem)\n            curModal.find(\"ul\").html(html);\n            var lbtn = $(\".left_lb\", curModal).data('current', $this);\n            var rbtn = $(\".right_lb\", curModal).data('current', $this);\n\n            $.DetailModal.SettingBtn(0);\n\n        };\n    } (jQuery);\n    //弹窗\n    $(document).ready(function () {\n        $.DetailModal.InitModal();\n		$(function(){\n			$('.main').on('click', '[target=hiddenIFrame], .like', function(e){\n					e.stopPropagation();\n				});\n		});\n\n        var runOnce = function(fn) {\n            fn();\n            return fn;\n        };\n\n        (function(){ // 弹窗高度调整\n            $(window).resize(runOnce(function() {\n                var height = $(window).height();\n                $('.popbox.modal').toggleClass('shrink', height < 700);\n            }));\n        })();\n\n        //主屏锁屏替换\n        $('.zhup').hover(function () {\n            $(this).parents('.popmain').find('.zhuping').show();\n\n        }, function () {\n            $(this).parents('.popmain').find('.zhuping').hide();\n        });\n        $('.suop').hover(function () {\n            $(this).parents('.popmain').find('.suoping').show();\n        }, function () {\n            $(this).parents('.popmain').find('.suoping').hide();\n        });\n\n        // 弹窗左右箭头行为\n        $('.right_lb, .left_lb').click(function (e) {\n            e.preventDefault();\n            var prev_next = $(this).is('.left_lb') ? 'prev' : 'next';\n            var $item = $(this).data('current')[prev_next]();\n			\n			if(!$item.length) {\n				var orig = $item;\n				$all = $('.main .modalLink');\n				var index = $all.index($(this).data('current'));\n				if(prev_next == \"next\") index += 1;\n				else index -=1;\n				$item = $all.eq(index) || $item;\n				if($item == orig || index < 0) $item = $();\n			}\n\n            if ($item.length) {\n                $item.click();\n            } \n            else {\n                if(prev_next == \"next\") {\n					$.DetailModal.LastPage();\n					$('#main').trigger('last');\n				}\n            }\n        });\n		\n		// 最后一页\n		(function () {\n			var $last = $('#lastmodal');\n			$last.on('mouseenter mouseleave', '.tj_hot li, .tj_zj li', function(e){\n				$(this).toggleClass('on', e.type == 'mouseenter');\n				$(this).children('.pic_or').toggleClass('pic_hover', e.type == 'mouseenter');\n			});\n			$last.find('.again_btn').click(function(e){\n				e.preventDefault();\n				$('.main .modalLink').eq(0).click();\n			});\n	   })();\n\n\n    });\n    \n</script>\n<script type=\"text/x-jsrender\" id=\"CategoryListTemplate\">\n   <li>\n        <div class=\"pic_or\">\n            <a href=\"http://pcx.sj.91.com/pic/new/Category.aspx?platform=Android&resolution=RES_320x480&cid={{:pic_cateid}}\">\n                <img  src=\"http://image.91rb.com/{{:pic_118x178_resolution}}\" alt=\"{{:pic_title}}\" />\n            </a>\n            <a href=\"#\" class=\"like png\">{{:pic_downnum}}</a>\n        </div>\n    </li>\n</script>\n<script type=\"text/x-jsrender\" id=\"TagListTemplate\">\n   <li>\n        <div class=\"pic_or\">\n            <a href=\"http://pcx.sj.91.com/pic/new/AlbumList.aspx?platform=Android&resolution=RES_320x480&id={{:TagId}}\">\n            <img src=\"{{:Icon}}\" alt=\"{{:TagName}}\" />\n            <div class=\"opy\">{{:TagName}}</div>\n            </a>\n        </div>\n    </li>\n</script>\n<script type=\"text/x-jsrender\" id=\"DetailImgTemplate\">\n    <li><a href=\"#\"><img src=\"{{:img}}\" /></a></li>\n</script>\n\n\n<div class=\"footer\">\n    本功能涉及的内容均由CP提供，提供内容的CP已承担由于内容合法性及健康性所引起的争议和法律责任.</div>\n<div style=\"display: none\">\n    <iframe src=\"/iframe.html\" scrolling=\"no\" name=\"hiddenIFrame\" id=\"hiddenIFrame\" width=\"100%\"\n        height=\"100%\" frameborder=\"0\"></iframe>\n</div>\n<div style=\"display: none\">\n    <script type=\"text/javascript\">\ntry{document.domain = \"sj.91.com\";}catch(e){}\n</script>\n<!--<script src='http://w.cnzz.com/c.php?id=30048851' charset='gb2312' language='JavaScript'></script>\n<script src='http://w.cnzz.com/c.php?id=30052256' language='JavaScript'></script>-->\n\n</div>\n<script src='http://w.cnzz.com/c.php?id=30058347' language='JavaScript'></script>\n\n<script type=\"text/javascript\" src=\"http://pcx.sj.91.com/Resources/js/jsrender.js\"></script>\n<script type=\"text/javascript\">\n\n    //移过去添加样式\n    $('.toppic_col li').hover(\n	function () {\n	    $(this).addClass('on');\n	},\n	function () {\n	    $(this).removeClass('on');\n	}\n);\n    $('.top_con li').hover(\n	function () {\n	    $(this).addClass('on');\n	},\n	function () {\n	    $(this).removeClass('on');\n	}\n);\n    $('.top_colR li').hover(\n	function () {\n	    $(this).addClass('on');\n	},\n	function () {\n	    $(this).removeClass('on');\n	}\n);\n\n$('.zh_list li').hover(\n	function(){\n		$(this).addClass('on');\n	},\n	function(){\n		$(this).removeClass('on');\n	}\n);\n\n    // 头部自适应调整\n    !function () {\n        var conList = $('.top_wrap');\n\n        function setSize() {\n            var w = $(window).width();\n            if (w >= 1000) {\n                conList.addClass('top_wrap_max');\n\n            } else {\n                conList.removeClass('top_wrap_max');\n            }\n        }\n\n        $(window).resize(setSize);\n        setSize();\n    } ();\n \n //综合瀑布流\n(function () {\n\n      //瀑布流\n        var $container = $('#main');\n    \n\n        $(function () {\n    \n            $container = $('#main');\n            window.remasonry = function() {\n    \n                //$container.find('.new_poster').css('visibility', 'hidden');\n        \n        \n                $container.masonry('destroy');\n        \n        \n                $container.imagesLoaded(function () {\n                    $container.find('.new_poster').css('visibility', '');\n                    $container.masonry({\n                            itemSelector: '.new_poster',\n                            isResizeBound: false,\n                            isFitWidth: false\n                        });\n                    $container.masonry('appended', $container.find('.new_poster'));\n                    setTimeout(function() {\n                        $(window).trigger('resize');\n                        $container.masonry();\n                    }, 0);\n            \n                });\n            \n            };\n            remasonry();\n        \n        });\n\n\n    //加载更多	\n    var doc = {};\n    doc.h = $(document).height();\n    doc.ch = document.documentElement.clientHeight || document.body.clientHeight;\n    doc.refresh = function () { this.h = $(document).height(); this.ch = document.documentElement.clientHeight || document.body.clientHeight; };\n\n    var loadmore = $('#loadMore'),\n		locked = false,\n		preHeight = 200; 	//提前量\n\n    $(window).scroll(function () { loadCheck(); });\n    $(window).resize(function () { doc.refresh(); loadCheck(); gutterCheck(); });\n\n    var loadCheck = function () {\n        if ($(document).scrollTop() + doc.ch >= loadmore.offset().top && !locked)\n            loadMore();\n    }\n\n    var $conwrp = $('.idx_content');\n    function gutterCheck() { // 调整间距\n        var conWidth = $conwrp.width();\n        conWidth = Math.min(conWidth, 1100);\n        conWidth = Math.max(conWidth, 790);\n        var mainWidth = conWidth - 5;\n        var colCount = 3;\n        if (window.masonryOpt) {\n            masonryOpt.columnWidth = Math.floor((mainWidth) / colCount);\n        }\n        setTimeout(function () { $container.length && $container.masonry(); }, 0);\n\n    }\n    var pageindex = 3;\n    function loadMore() {\n        loadmore.show();\n        locked = true;\n        //ajax模拟\n        setTimeout(function () {\n            getResult(pageindex++, function (data) {\n                var templates = $.templates(\"#piclist\");\n                $(\"#t\").html(templates.render(data.list));\n                var items = $('#t .new_poster').clone(); //模拟取到数据\n                $('#main').append(items).masonry('appended', items);\n                    items.imagesLoaded(function () {\n                        $('#main').masonry();\n                    locked = false;\n                });\n                //locked = false;\n                //$.DetailModal.InitModal();\n            });\n\n        }, 100);\n        $('.zh_list li').hover(\n			function () {\n			    $(this).addClass('on');\n			},\n			function () {\n			    $(this).removeClass('on');\n			}\n		);\n    }\n})();\n$.views.converters(\"urlEncode\", function (str) {\n    str.replace(\"'\", \"&#39\").replace(\"\\\"\", \"&#34\");\n    return encodeURIComponent(str);\n});\n$.views.converters({\n    downnum: function (w, d) {\n        var order = $(\".menu ul li a.on\").attr(\"order\");\n        return order == \"pic_downnum_weekDESC\" ? w : d;\n    }\n});\nfunction getResult(pageindex, callback) {\n\n            $.getJSON(\"http://pcx.sj.91.com/pic/new/controller.ashx?action=piclist&pageindex=\"+pageindex+\"&pagesize=8&order=pic_downnum_weekDESC\", function (data) {\n                if (data.code == 0) {\n                    if (typeof callback == \"function\") {\n                        callback(data);\n                    }\n                    else {\n                        var templates = $.templates(\"#piclist\");\n                        $(\"#main\").html(templates.render(data.data));\n                        //$.DetailModal.InitModal();\n                        window.remasonry();\n                    }\n                }\n\n            })\n        }\n        $(\".toppic_col li gt(1)\").add(\"pad\");\n        $.Pic.MenuOn(3);\n</script>\n</body>\n</html>\n\n",
 			"settings":
 			{
-				"buffer_size": 2712,
+				"buffer_size": 44364,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "lib/user.coffee",
+			"file": "lib/proxy.coffee",
 			"settings":
 			{
-				"buffer_size": 763,
+				"buffer_size": 571788,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "lib/ipmap.coffee",
+			"file": "/C/Users/Default.HP7900-RON/Downloads/SwitchyPac (1).pac",
 			"settings":
 			{
-				"buffer_size": 739,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "lib/middleware/filter.coffee",
-			"settings":
-			{
-				"buffer_size": 1985,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 3 files for \".writehead\"\n\nD:\\BDYUN\\FrontGate\\debug-gate\\node_modules\\http-proxy\\lib\\node-http-proxy\\http-proxy.js:\n  201      }\n  202  \n  203:     res.writeHead(500, { 'Content-Type': 'text/plain' });\n  204  \n  205      if (req.method !== 'HEAD') {\n  ...\n  330        res.setHeader(key, response.headers[key]);\n  331      });\n  332:     res.writeHead(response.statusCode);\n  333  \n  334      function ondata(chunk) {\n\nD:\\BDYUN\\FrontGate\\debug-gate\\node_modules\\http-proxy\\lib\\node-http-proxy\\routing-proxy.js:\n  200        try {\n  201          if (!this.emit('notFound', req, res)) {\n  202:           res.writeHead(404);\n  203            res.end();\n  204          }\n  205        }\n  206        catch (er) {\n  207:         console.error(\"res.writeHead/res.end error: %s\", er.message);\n  208        }\n  209  \n\n4 matches across 2 files\n",
-			"settings":
-			{
-				"buffer_size": 843,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "https-proxy.coffee",
-			"settings":
-			{
-				"buffer_size": 3942,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "node_modules/http-proxy/lib/node-http-proxy/http-proxy.js",
-			"settings":
-			{
-				"buffer_size": 28750,
+				"buffer_size": 403329,
 				"line_ending": "Unix"
 			}
 		}
@@ -181,9 +147,17 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 375.0,
+		"height": 161.0,
 		"selected_items":
 		[
+			[
+				"wrap",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript"
+			],
 			[
 				"format",
 				"Format Code"
@@ -211,10 +185,6 @@
 			[
 				"outw",
 				"Emmet: Match Pair (outward)"
-			],
-			[
-				"wrap",
-				"Emmet: Wrap With Abbreviation"
 			],
 			[
 				"inw",
@@ -459,13 +429,9 @@
 			[
 				"emm",
 				"Emmet: Merge Lines"
-			],
-			[
-				"javasc",
-				"Set Syntax: JavaScript"
 			]
 		],
-		"width": 450.0
+		"width": 498.0
 	},
 	"console":
 	{
@@ -482,23 +448,30 @@
 	},
 	"file_history":
 	[
+		"/D/BDYUN/FrontGate/debug-gate/node_modules/http-proxy/lib/node-http-proxy/http-proxy.js",
+		"/D/BDYUN/FrontGate/debug-gate/https-proxy.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/filter.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/proxy.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/https.coffee",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/D/BDYUN/FrontGate/debug-gate/lib/static/admin.html",
+		"/D/BDYUN/FrontGate/debug-gate/lib/static/js/admin.js",
+		"/D/BDYUN/FrontGate/debug-gate/lib/static/js/ui-bootstrap-tpls-0.5.0.js.dump",
+		"/C/Users/Default.HP7900-RON/AppData/Roaming/Sublime Text 2/Packages/Color Scheme - Frontend Delight/FrontEndDelightColorScheme.tmTheme",
+		"/C/Users/Default.HP7900-RON/AppData/Roaming/Sublime Text 2/Packages/Color Schemes by carlcalderon/Stereokai/Stereokai.tmTheme",
+		"/D/BDYUN/FrontGate/debug-gate/lib/static/js/ui-bootstrap-tpls-0.5.0.js",
+		"/D/BDYUN/FrontGate/debug-gate/lib/user.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/lib/ipmap.coffee",
+		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/user_manager.coffee",
 		"/D/BDYUN/FrontGate/debug-gate/node_modules/http-proxy/node_modules/colors/colors.js.dump",
 		"/D/BDYUN/FrontGate/debug-gate/node_modules/http-proxy/node_modules/colors/ReadMe.md.dump",
-		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/filter.coffee",
 		"/D/BDYUN/FrontGate/debug-gate/package.json",
 		"/D/BDYUN/FrontGate/debug-gate/test.coffee",
-		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/user_manager.coffee",
-		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/proxy.coffee",
 		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/rewrite.coffee",
-		"/D/BDYUN/FrontGate/debug-gate/lib/user.coffee",
-		"/D/BDYUN/FrontGate/debug-gate/node_modules/http-proxy/lib/node-http-proxy/http-proxy.js",
-		"/C/Windows/System32/drivers/etc/hosts",
 		"/D/BDYUN/FrontGate/debug-gate/node_modules/socks5-http-client/index.js",
-		"/D/BDYUN/FrontGate/debug-gate/https-proxy.coffee",
 		"/D/BDYUN/FrontGate/debug-gate/README.md",
 		"/D/BDYUN/FrontGate/debug-gate/lib/proxy.coffee",
 		"/D/BDYUN/FrontGate/proxy-example.pac",
-		"/D/BDYUN/FrontGate/debug-gate/lib/ipmap.coffee",
 		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/stream_filter.coffee",
 		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/user.coffee",
 		"/D/BDYUN/FrontGate/debug-gate/lib/middleware/ipmap.coffee",
@@ -602,14 +575,7 @@
 		"/C/Users/Default.HP7900-RON/AppData/Roaming/Sublime Text 2/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
 		"/D/BDYUN/TM/GameCollect/caseJul16th/list.js",
 		"/D/BDYUN/TM/moboproj/public/resources/soft/all/css/style.css",
-		"/D/BDYUN/TM/GameCollect/caseJul05th/modded/ue.coverflow.js",
-		"/D/BDYUN/wapFkbl/public/分类.html",
-		"//192.168.254.53/3.x助手/App/Detail.aspx",
-		"//192.168.254.53/3.x助手/Resources/App/Public/new/js/ue.coverflow.js",
-		"/D/BDYUN/wapFkbl/public/ix.html",
-		"/D/BDYUN/wapFkbl/public/js/index.js",
-		"/D/BDYUN/wapFkbl/public/js/common.js",
-		"/C/Users/Default.HP7900-RON/Desktop/gjj.xlsx"
+		"/D/BDYUN/TM/GameCollect/caseJul05th/modded/ue.coverflow.js"
 	],
 	"find":
 	{
@@ -617,7 +583,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 92.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"D:\\BDYUN\\FrontGate\\debug-gate\\node_modules\\http-proxy\\lib\\node-http-proxy",
@@ -646,6 +612,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"shexpmatch",
+			"16",
+			"brickWidth",
+			"accordion-transclude",
+			"template/accordion/accordion-group.html",
+			".heading",
+			"setHeading",
+			"accordion-group",
+			"template/accordion/accordion.html",
+			"accordi",
 			"_write.call",
 			"tr.",
 			".writehead",
@@ -763,17 +739,7 @@
 			"isfluid",
 			"p>我不是",
 			"img src=\"images/null.gif",
-			"<span>",
-			"li",
-			"PageMap",
-			"pageMap",
-			"page",
-			"itemIdx",
-			"pgIdx",
-			"steps",
-			"contWidth",
-			"widths",
-			"pager"
+			"<span>"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -796,29 +762,22 @@
 			[
 				{
 					"buffer": 0,
-					"file": "proxy_test.coffee",
 					"settings":
 					{
-						"buffer_size": 2712,
+						"buffer_size": 44364,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1593,
-								1593
+								41829,
+								41829
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
 							"bh_regions":
 							[
 								"bh_regex",
@@ -862,438 +821,30 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close"
 							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 771.0,
+						"translation.y": 16557.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "lib/user.coffee",
+					"file": "lib/proxy.coffee",
 					"settings":
 					{
-						"buffer_size": 763,
+						"buffer_size": 571788,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								242,
-								242
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 648.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "lib/ipmap.coffee",
-					"settings":
-					{
-						"buffer_size": 739,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								337,
-								337
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 2,
-			"sheets":
-			[
-				{
-					"buffer": 3,
-					"file": "lib/middleware/filter.coffee",
-					"settings":
-					{
-						"buffer_size": 1985,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								438,
-								438
+								191772,
+								191772
 							]
 						],
 						"settings":
@@ -1434,124 +985,25 @@
 							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 33239.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 2,
+					"file": "/C/Users/Default.HP7900-RON/Downloads/SwitchyPac (1).pac",
 					"settings":
 					{
-						"buffer_size": 843,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										160,
-										170
-									],
-									[
-										350,
-										360
-									],
-									[
-										614,
-										624
-									],
-									[
-										750,
-										760
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								355,
-								355
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"detect_indentation": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "https-proxy.coffee",
-					"settings":
-					{
-						"buffer_size": 3942,
+						"buffer_size": 403329,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3790,
-								3790
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1689,173 +1141,11 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2052.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "node_modules/http-proxy/lib/node-http-proxy/http-proxy.js",
-					"settings":
-					{
-						"buffer_size": 28750,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10895,
-								10904
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 5627.0,
+						"translation.y": 51180.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1880,18 +1170,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.415255058888,
 			1.0
 		],
 		"rows":
@@ -1942,6 +1225,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 237.0,
+	"side_bar_width": 276.0,
 	"status_bar_visible": true
 }

@@ -88,7 +88,7 @@ exports.middleware = (req, res, next) ->
 
 
 	# Rewrite rule currently bypass gfw service
-	if !req.proxyHost and (proxyOrNot fullURL) and false # TODO: gfw currently disabled
+	if !req.proxyHost and (proxyOrNot fullURL)
 		# TODO: Use Configuration from database
 		req.proxyHost = '127.0.0.1'
 		req.proxyPort = '8118'
@@ -113,9 +113,28 @@ exports.middleware = (req, res, next) ->
 		#console.log "No 'Connection header'"
 		req.headers['Connection'] = 'keep-alive'
 
+	delete req.headers['proxy-connection']
+	
 
-	console.log "正在请求: #{req.proxyHost || req.host}"
-	console.log "请求地址为：#{req.fullURL}"
+	#req.headers['Host'] = req.headers['host']
+
+	#req.headers = null
+	# QQ authenticate header case sensitive bug
+	if !!~fullURL.indexOf('ptlogin2')
+		req.headers['Host'] = req.headers['host']
+	###
+	res.setHeader = do (_setHeader = res.setHeader) ->
+		(key, val) ->
+			console.log "Key is: #{key}"
+			key = 'Host' if key is 'host'
+			_setHeader.apply @, arguments
+			@_headerNames[key.toLowerCase()] = val
+	###
+
+
+
+	console.log "正在请求: #{req.proxyHost || req.host} changeOrigin: #{b_changeOrigin}"
+	console.log "请求地址为：#{fullURL} Path: #{req.url}"
 	proxy.proxyRequest req, res,
 		host: req.proxyHost || req.host
 		port: req.proxyPort || 80

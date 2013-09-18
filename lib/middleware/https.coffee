@@ -27,9 +27,10 @@ exports.middleware = (request, socketRequest, bodyhead) ->
 		# Client kick start
 		socketRequest.write "HTTP/#{version} 200 Connection established\r\n\r\n"
 
-
-	if (proxyOrNot url) and false # TODO: gfw support disabled
+	console.log " HTTPS Url is #{url}"
+	if (proxyOrNot url) or !!~url.indexOf('facebook') or !!~url.indexOf('twitter')
 		# TODO: Use Configure from Database
+
 		req = http.request
 			port: 8118
 			hostname: '127.0.0.1'
