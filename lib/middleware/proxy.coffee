@@ -2,6 +2,13 @@ httpProxy = require 'http-proxy'
 proxy = new httpProxy.RoutingProxy()
 url = require 'url'
 {proxyOrNot} = require '../proxy'
+`
+process.on('uncaughtException', function(err) {
+    // This error might fired when reverseProxy recieves error and unregistered the error listener
+    // But other error will make program go into unknown state
+    console.log('\n\n\n\n\n\n\n\n\n\nUNCATCHED ERROR!!!!!!!!!!!!!!!!!!!! \n\n\n\n\n\n\n\n\n\n\n' + err);
+});
+`
 
 # TODO: https 双向代理的实现。。套用的逻辑应该基本一样 只是加上了SSl协议
 

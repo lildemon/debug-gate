@@ -4,6 +4,27 @@
   "password": "mypass",
   "rules": [
     {
+      "pattern": "http://lysg.ly913.com*",
+      "enabled": false,
+      "host": {
+        "ip": "127.0.0.1",
+        "enabled": true
+      },
+      "filter": {
+        "map": "function($) {  }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "替换内容",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    },
+    {
       "pattern": "http://pc5.sj.91.com/app/Special.aspx\\?savecookie=1&device=Android&os=Android&platform=android&fw=android&ispad=0&resolution=640,480&mobiletype=&91ver=5.0.11.237&jailbreak=1&offline=1&itunesversion=11.0.2.26&isituneslite=0&pi=gBhp2_YkRqzGH2P-UoNt-gh9JqRBGAaPNmniHCDxZpfEYJkgDBtdGCLn0ORZ3rxD0",
       "enabled": true,
       "host": {

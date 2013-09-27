@@ -13,16 +13,16 @@ exports.middleware = (request, socketRequest, bodyhead) ->
 		console.log "HTTP CONNECT Client Request Error: #{err}"
 
 	onSocketConnect = (proxySocket) ->
-		proxySocket.write bodyhead
-		socketRequest.pipe proxySocket
-		proxySocket.pipe socketRequest
-
 		proxySocket.on 'error', (err) ->
 			socketRequest.write "HTTP/#{version} 500 Connection error\r\n\r\n"
 			socketRequest.end()
 
 		socketRequest.on 'error', (err) ->
 			proxySocket.end()
+
+		proxySocket.write bodyhead
+		socketRequest.pipe proxySocket
+		proxySocket.pipe socketRequest
 
 		# Client kick start
 		socketRequest.write "HTTP/#{version} 200 Connection established\r\n\r\n"
@@ -38,13 +38,14 @@ exports.middleware = (request, socketRequest, bodyhead) ->
 			path: url
 		req.end()
 
-		req.on 'connect', (res, proxySocket, head) ->
-			socketRequest.write head
-
-			onSocketConnect proxySocket
+		
 		req.on 'error', (err) ->
 			socketRequest.write "HTTP/#{version} 500 Connection error\r\n\r\n"
 			socketRequest.end()
+
+		req.on 'connect', (res, proxySocket, head) ->
+			socketRequest.write head
+			onSocketConnect proxySocket
 	else
 		proxySocket = net.connect hostport[1], hostport[0], ->
 			onSocketConnect proxySocket
