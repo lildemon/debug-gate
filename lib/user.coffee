@@ -3,6 +3,7 @@ urlpattern = require 'url-pattern'
 #require pattern match
 
 users = {}
+rulesCache = {}
 
 # insert fake data to test
 path = require 'path'

@@ -4,7 +4,7 @@ map = {}
 
 # Fake data to test trumpet
 map['127.0.0.1'] = 
-	user: 'abc'
+	user: 'ronhng'
 
 fetchIp = (ip, callback) ->
 	db.get ip, (err, body) ->

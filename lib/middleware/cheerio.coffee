@@ -86,8 +86,11 @@ exports.middleware = (req, res, next) ->
 				writeHeadBack()
 				res.end data
 			else
+				throw 'Unexpected end calling'
+				###
 				res.write data
-				res.end()
+				_end.call(res, data, encoding)
+				###
 
 		next()
 

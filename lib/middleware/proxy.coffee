@@ -114,12 +114,12 @@ exports.middleware = (req, res, next) ->
 		# http-proxy assumes req.url only has 'path' part, just as reverse proxy assumes
 		# But if going through gfw, then it's exact behavior we want. in this case browser and we both use forward proxy anyway.
 		req.url = parsedUrl.path
-
+	###
 	# Trigger Node.js client request keep-alive
 	unless req.headers['Connection']
 		#console.log "No 'Connection header'"
 		req.headers['Connection'] = 'keep-alive'
-
+	###
 	delete req.headers['proxy-connection']
 	
 

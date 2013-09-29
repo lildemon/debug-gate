@@ -238,7 +238,7 @@
       "pattern": "http://pcx.sj.91.com/*",
       "enabled": true,
       "host": {
-        "ip": "192.168.254.70",
+        "ip": "121.207.254.181",
         "enabled": true
       },
       "filter": {
