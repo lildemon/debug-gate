@@ -3,8 +3,8 @@ db = require('nano')('http://localhost:5984/debug_gate')
 map = {}
 
 # Fake data to test trumpet
-map['127.0.0.1'] = 
-	user: 'ronhng'
+#map['127.0.0.1'] = 
+#	user: 'ronhng'
 
 fetchIp = (ip, callback) ->
 	db.get ip, (err, body) ->
@@ -29,6 +29,9 @@ exports.setUserForIp = (ip, user, callback) ->
 
 exports.getUserForIp = (ip, callback) ->
 	console.log "当前用户IP是: #{ip}"
+	unless map[ip]?
+		map[ip] =
+			user: ip.split('.').join('') + 'store'
 	if typeof map[ip] is "undefined"
 		fetchIp ip, ->
 			if map[ip]

@@ -30,12 +30,15 @@ console.log "Gate Started on port 8388"
 
 adminapp = express()
 adminapp.configure ->
+	adminapp.enable('trust proxy')
 	#adminapp.use express.cookieSession()
 	# bodyparser
+	adminapp.use require('./lib/middleware/user_manager').middleware
 	adminapp.use '/static', express.static(__dirname + '/lib/static')
 	#configure for DEMO
 	adminapp.use(express.bodyParser())
-	adminapp.use require('./lib/middleware/user_manager').middleware
+	
+	
 
 
 # TODO: Route reconfigure, using dependency inject etc..

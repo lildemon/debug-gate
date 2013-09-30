@@ -33,7 +33,7 @@ exports.middleware = (request, socketRequest, bodyhead) ->
 
 		req = http.request
 			port: 8118
-			hostname: '127.0.0.1'
+			hostname: '192.168.206.17'
 			method: 'CONNECT'
 			path: url
 		req.end()

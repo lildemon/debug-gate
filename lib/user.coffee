@@ -8,13 +8,15 @@ rulesCache = {}
 # insert fake data to test
 path = require 'path'
 jf = require 'jsonfile'
+fs = require 'fs'
 
+initobj = jf.readFileSync(path.resolve(__dirname, '../store.json'))
 
 db.get = (id, callback) ->
-	callback null, jf.readFileSync(path.resolve(__dirname, '../store.json'));
+	callback null, jf.readFileSync(path.resolve(__dirname, "../#{id}.json"));
 
-db.insert = (obj) ->
-	jf.writeFileSync(path.resolve(__dirname, '../store.json'), obj);
+db.insert = (obj, id) ->
+	jf.writeFileSync(path.resolve(__dirname, "../#{id}.json"), obj);
 
 
 module.exports = class User
@@ -30,10 +32,18 @@ module.exports = class User
 	###
 
 	@getUserFromId: (id, callback) =>
+		console.log "GetFrom ID: #{id}"
 		return callback users[id] if users[id]
-		db.get id, (err, body) =>
-			return callback null if err
-			callback new @(body)
+
+		storepath = path.resolve(__dirname, "../#{id}.json");
+		fs.exists storepath, (exist) =>
+			unless exist
+				initobj['_id'] = id
+				jf.writeFileSync storepath, initobj
+
+			db.get id, (err, body) =>
+				return callback null if err
+				callback new @(body)
 
 	constructor: (@doc) ->
 		@id = @doc._id
