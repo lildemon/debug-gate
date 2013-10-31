@@ -1,5 +1,13 @@
 db = require('nano')('http://localhost:5984/debug_gate')
-urlpattern = require 'url-pattern'
+#urlpattern = require 'url-pattern'
+`
+var wildcardToRegexp = function wildcardToRegexp(pattern) {
+    pattern = pattern.replace(/([\\\+\|\{\}\[\]\(\)\^\$\.#])/g, "\\$1");
+    pattern = pattern.replace(/\*/g, ".*");
+    pattern = pattern.replace(/\?/g, ".");
+    return pattern;
+};
+`
 #require pattern match
 
 users = {}
@@ -93,15 +101,13 @@ module.exports = class User
 				{pattern} = rule
 				if !!~pattern.indexOf 'REGEX'
 					pattern = pattern.substring(6)
-					try
-						if url.match new RegExp(pattern)
-							return rule
-					catch
-						continue
 				else
-					pattern = urlpattern pattern
-					if pattern.match url
+					pattern = wildcardToRegexp(pattern)
+				try
+					if url.match new RegExp(pattern)
 						return rule
+				catch
+					continue
 		null
 
 
