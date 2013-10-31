@@ -1,6 +1,7 @@
 cheerio = require 'cheerio'
 concat = require 'concat-stream'
 zlib = require 'zlib'
+iconv = require 'iconv-lite'
 
 exports.middleware = (req, res, next) ->
 	if (filter = req.user?.getFilter req.fullURL) and filter.enabled
@@ -24,11 +25,17 @@ exports.middleware = (req, res, next) ->
 				res.writeHead head_wroted.statusCode, head_wroted.headers
 
 		cheerilize = ->
+			is_GBK = do ->
+				contType = res.getHeader('Content-Type')?.toLowerCase() or head_wroted.headers?['Content-Type']?.toLowerCase();
+				if contType and (!!~contType.indexOf('gbk') or !!~contType.indexOf('gb2312'))
+					true
+				else
+					false
 			streamer = cheerioStream = concat (data) ->
 				result = null
 				try
 					# For GBK Websites, iconv might needed in here
-					$ = cheerio.load data.toString()
+					$ = cheerio.load (if is_GBK then iconv.decode(data, 'gbk') else data.toString())
 					mapfn = eval "'use strict'; (#{filter.map})"
 					mapfn $
 					result = $.html()
@@ -41,7 +48,7 @@ exports.middleware = (req, res, next) ->
 
 				#console.log result
 				#writeHeadBack()
-				res.end result
+				res.end if is_GBK then iconv.encode(result, 'gbk') else result
 
 			if (res.getHeader 'Content-Encoding') is 'gzip'
 				console.log "Creating gzip Streamer"
@@ -54,7 +61,7 @@ exports.middleware = (req, res, next) ->
 					first_write = true
 					res.removeHeader 'content-encoding'
 					res.removeHeader 'content-length'
-					res.type 'html'
+					#res.type 'html'
 					_writeHead.call res, head_wroted.statusCode or 200
 
 				streamer.write data

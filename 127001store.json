@@ -1,0 +1,300 @@
+{
+  "_id": "127001store",
+  "_rev": "2-de30add1ef49e14e17d1c05edcc35fef",
+  "password": "mypass",
+  "rules": [
+    {
+      "pattern": "http://*.qq.com*",
+      "enabled": true,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) { $('style').html('') }",
+        "enabled": true
+      },
+      "swap": {
+        "content": "替换内容",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    },
+    {
+      "pattern": "http://pcx.sj.91.com/stat.json",
+      "enabled": true,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) {  }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "{user: 'true'}",
+        "mime": "text/json",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url){ return 'http://www.qq.com/' }",
+        "enabled": true
+      }
+    },
+    {
+      "pattern": "http://su.bdimg.com/static/skin/css/skin_e8e1c659.css",
+      "enabled": true,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) {  }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "body {background: none}",
+        "mime": "text/html",
+        "enabled": true
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    },
+    {
+      "pattern": "http://pcx.sj.91.com/*",
+      "enabled": true,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) {  }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "afsdfsdfsdf",
+        "mime": "text/html",
+        "enabled": true
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    },
+    {
+      "pattern": "http://pc5.sj.91.com/*",
+      "enabled": true,
+      "host": {
+        "ip": "192.168.254.53",
+        "enabled": true
+      },
+      "filter": {
+        "map": "function($) {  }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "替换内容",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    },
+    {
+      "pattern": "http://www.baidu.com/",
+      "enabled": true,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) { \n$('title').html('还是谷歌好啊！');\n$('#lg').html('<h1 style=\"font-size: 50px;\">谷歌谷歌！！</h1><br>');\n$('#s_superpage_css_lnk').attr('href', )\n }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    },
+    {
+      "pattern": "http://pcres.sj.91.com/resources/js/jquery-1.7.1.min.js",
+      "enabled": false,
+      "host": {
+        "ip": "192.168.254.70",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) {  }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "替换内容",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url){ \n    return 'http://www.3595.com/js/jquery-1.7.2.min.js';\n}",
+        "enabled": true
+      }
+    },
+    {
+      "pattern": "http://www.abc.com/ajax.json",
+      "enabled": true,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) {  }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "{\n   \"data\": \"YES\"\n}",
+        "mime": "text/json",
+        "enabled": true
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    },
+    {
+      "pattern": "http://pcx.sj.91.com/*",
+      "enabled": true,
+      "host": {
+        "ip": "121.207.254.181",
+        "enabled": true
+      },
+      "filter": {
+        "map": "function($) {  }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "邹华机子IP：192.168.254.70\n测试服务器IP：121.207.254.181",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    },
+    {
+      "pattern": "http://pcres.sj.91.com/pcx/resources/App/Public/new/css/style.css",
+      "enabled": true,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) { \n\n }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "body { background: #F00; }",
+        "mime": "text/css",
+        "enabled": true
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    },
+    {
+      "pattern": "REGEX:(.*)\\.google\\.com",
+      "host": {
+        "ip": "207.97.227.245",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($){$('title').text('荣荣')}"
+      },
+      "swap": {
+        "content": "",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url, $pattern) {}",
+        "enabled": false
+      },
+      "enabled": false
+    },
+    {
+      "pattern": "*.91.com*",
+      "enabled": false,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) {  \n\n    $('a').text(\"OK!\");\n    $('link[href=\"http://pcres.sj.91.com/pcx/resources/App/Public/new/css/style.css\"]').attr('href', '/style.css');\n }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "<!doctype html>\n<html>\n<head>\n\t<meta charset=\"UTF-8\">\n\t<title>Document</title>\n</head>\n<body>\n\t<h1>被收购了！！ 有事请找百度！</h1>\n</body>\n</html>",
+        "mime": "text/html",
+        "enabled": true
+      },
+      "rewrite": {
+        "map": "function($url){  return 'http://www.qq.com/' }",
+        "enabled": false
+      }
+    },
+    {
+      "pattern": "*.cnbeta.com/*",
+      "host": {
+        "ip": "192.168.1.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($){\n    $('a').text('HRHRHRHRHR');\n \n    $('link[href=\"http://static.cnbetacdn.com/assets/css/base.css?v=20130808\"]').attr('href', '/mycss.css')\n\n}",
+        "enabled": true
+      },
+      "swap": {
+        "content": "abc",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url) { return 'http://www.91.com/' }",
+        "enabled": false
+      },
+      "enabled": false
+    },
+    {
+      "pattern": "www.example.com",
+      "enabled": true,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) {  }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "替换内容",
+        "mime": "text/html",
+        "enabled": false
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    }
+  ]
+}
