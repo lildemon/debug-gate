@@ -28,16 +28,6 @@ db.insert = (obj, id) ->
 
 
 module.exports = class User
-	###
-
-	@get : (name) ->
-		db.get name, (err, body) ->
-
-	@exist: (name, callback) ->
-		db.head name, (err, _, headers) ->
-			callback !!err
-
-	###
 
 	@getUserFromId: (id, callback) =>
 		console.log "GetFrom ID: #{id}"

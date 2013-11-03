@@ -4,6 +4,27 @@
   "password": "mypass",
   "rules": [
     {
+      "pattern": "http://stackoverflow.com/questions/11873627/angularjs-ng-model-binding-fnot-updating-with-dynamic-values?lq=1",
+      "enabled": true,
+      "host": {
+        "ip": "1.2.3.4",
+        "enabled": false
+      },
+      "filter": {
+        "map": "function($) {  }",
+        "enabled": false
+      },
+      "swap": {
+        "content": "替换内容",
+        "mime": "text/html",
+        "enabled": true
+      },
+      "rewrite": {
+        "map": "function($url){  }",
+        "enabled": false
+      }
+    },
+    {
       "pattern": "http://*.qq.com*",
       "enabled": true,
       "host": {
