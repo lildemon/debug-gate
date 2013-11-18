@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>编辑规则</title>
+	<link rel="stylesheet" href="css/bootstrap-combined.min.css">
+	<script src="js/angular.js"></script>
+	<script src="js/ui-bootstrap-tpls-0.5.0.js"></script>
+	<style>
+		.form-inline .control-group {
+			margin-bottom: 5px;
+		}
+		.container { position: relative; }
+		.form-inline input[type=text] { width: 300px; }
+		.control-group label span { display: inline-block; width: 100px; text-align: right; }
+		.action-group { position: absolute; right: 10px; top: 10px; }
+	</style>
+</head>
+<body class="">
+	<div class="container">
+		
+		<form action="" class="form-inline">
+			<h4><input type="checkbox" id="shouldEnable"> 编辑规则： {{rule_id}}</h4>
+			
+				<div class="control-group">
+					<label for="urlPattern" class="control-label">
+						<span>URL区配：</span>
+					<input type="text" id="urlPattern"></label>
+				</div>
+			<div class="control-group">
+				<label for="urlRegMatch" class="control-label">
+					<span>URL正则区配：</span>
+				<input type="text" id="urlRegMatch"></label>
+			</div>
+			<div class="container">
+				<fieldset>
+					<div class="container well well-small">
+						<h5>替换规则： <button class="btn btn-primary" type="button">编辑</button> <button class="btn btn-danger" type="button">清空</button></h5>
+
+						<div class="container" style="margin: 0 10px;">
+							<div class="alert alert-info">
+								
+								<p><strong>MIME类型：</strong> text/html</p>
+								<p><strong>charset编码：</strong> utf-8</p>
+								<p><strong>内容预览：</strong><textarea name="" id="" cols="50" rows="3" disabled style="width: 70%;">html content</textarea></p>
+							</div>
+						</div>
+					</div>
+					
+				</fieldset>
+			</div>
+			<div class="container">
+				<fieldset>
+					<div class="container well well-small">
+						<h5>过滤规则：<button class="btn btn-primary" type="button">+ 新增</button> <button class="btn btn-danger" type="button">清空</button></h5>
+
+						<div class="container" style="margin: 0 10px;">
+							<div class="alert alert-info">
+								
+								<div class="control-group">
+									<label class="control-label"><span>选择器：</span>
+									<input type="text"></label>
+								</div>
+								<div class="control-group">
+									<label class="control-label"><span>正则区配：</span>
+									<input type="text"></label>
+								</div>
+								<div class="control-group">
+									<label class="control-label">
+										<span>替换为：</span>
+										<textarea name="" id="" cols="50" rows="3" style="width: 70%;">html content</textarea>
+									</label>
+								</div>
+
+								<p class="text-center"><button class="btn btn-primary" type="button">编辑器编辑</button> <button class="btn btn-danger" type="button">删除</button></p>
+							</div>
+							
+							
+						</div>
+					</div>
+					
+				</fieldset>
+			</div>
+
+			<div class="container">
+				<fieldset>
+					<div class="container well well-small">
+						<h5>URL重写： <button class="btn btn-danger" type="button">清空</button></h5>
+
+						<div class="alert alert-info">
+							<p><strong>重写为：</strong><textarea name="" id="" cols="50" rows="3" style="width: 70%;">http://yoururl.com/{{template}}</textarea></p>
+						</div>
+					</div>
+					
+				</fieldset>
+			</div>
+			<div class="action-group">
+				<p class="text-center"><button class="btn btn-primary" type="button">保存规则</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

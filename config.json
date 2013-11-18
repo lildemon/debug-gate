@@ -1,0 +1,8 @@
+{
+  "projectDir": "./projects",
+  "dbName": "gate",
+  "dbHost": "http://gate.frontkit.net",
+  "dbPort": 5984,
+  "projVhost": "*.tmued.frontkit.net",
+  "publicVhost": "*.tm.frontkit.net"
+}
